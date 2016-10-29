@@ -1,0 +1,73 @@
+-- -----------------------------------------------------
+-- Table `f2016_s1_user16`.`TRIP_PORTS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `f2016_s1_user16`.`TRIP_PORTS` (
+  `trip_id` INT NOT NULL,
+  `port_id` INT NOT NULL,
+  `day_id` INT NOT NULL,
+  `arrival_time` TIME NULL,
+  `departure_time` TIME NULL,
+  PRIMARY KEY (`trip_id`, `port_id`, `day_id`),
+  INDEX `tripPort_fk_02_idx` (`port_id` ASC),
+  INDEX `tripPort_fk_03_idx` (`day_id` ASC),
+  CONSTRAINT `tripPort_fk_01`
+    FOREIGN KEY (`trip_id`)
+    REFERENCES `f2016_s1_user16`.`TRIP` (`trip_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `tripPort_fk_02`
+    FOREIGN KEY (`port_id`)
+    REFERENCES `f2016_s1_user16`.`PORTS` (`port_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `tripPort_fk_03`
+    FOREIGN KEY (`day_id`)
+    REFERENCES `f2016_s1_user16`.`TRIP_ITINERARY` (`day_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `f2016_s1_user16`.`GIFT_TRANSACTION`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `f2016_s1_user16`.`GIFT_TRANSACTION` (
+  `giftSale_id` INT NOT NULL,
+  `gift_id` INT NOT NULL,
+  `room_id` INT NOT NULL,
+  `sale_time` TIMESTAMP NOT NULL,
+  `staff_id` INT NOT NULL,
+  `shop_id` INT NOT NULL,
+  `trip_id` INT NOT NULL,
+  PRIMARY KEY (`giftSale_id`),
+  INDEX `bar_fk_02_idx` (`room_id` ASC),
+  INDEX `bar_fk_03_idx` (`staff_id` ASC),
+  INDEX `bar_fk_04_idx` (`shop_id` ASC),
+  INDEX `bar_fk_05_idx` (`trip_id` ASC),
+  INDEX `bar_fk_01_idx` (`gift_id` ASC),
+  CONSTRAINT `bar_fk_01`
+    FOREIGN KEY (`gift_id`)
+    REFERENCES `f2016_s1_user16`.`GIFTS` (`gift_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `bar_fk_02`
+    FOREIGN KEY (`room_id`)
+    REFERENCES `f2016_s1_user16`.`ROOM` (`room_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `bar_fk_03`
+    FOREIGN KEY (`staff_id`)
+    REFERENCES `f2016_s1_user16`.`STAFF` (`staff_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `bar_fk_04`
+    FOREIGN KEY (`shop_id`)
+    REFERENCES `f2016_s1_user16`.`WORKAREAS` (`area_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `bar_fk_05`
+    FOREIGN KEY (`trip_id`)
+    REFERENCES `f2016_s1_user16`.`TRIP` (`trip_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
