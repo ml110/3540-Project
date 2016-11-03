@@ -40,32 +40,32 @@ CREATE TABLE IF NOT EXISTS `f2016_s1_user16`.`GIFT_TRANSACTION` (
   `shop_id` INT NOT NULL,
   `trip_id` INT NOT NULL,
   PRIMARY KEY (`giftSale_id`),
-  INDEX `bar_fk_02_idx` (`room_id` ASC),
-  INDEX `bar_fk_03_idx` (`staff_id` ASC),
-  INDEX `bar_fk_04_idx` (`shop_id` ASC),
-  INDEX `bar_fk_05_idx` (`trip_id` ASC),
-  INDEX `bar_fk_01_idx` (`gift_id` ASC),
-  CONSTRAINT `bar_fk_01`
+  INDEX `gift_fk_02_idx` (`room_id` ASC),
+  INDEX `gift_fk_03_idx` (`staff_id` ASC),
+  INDEX `gift_fk_04_idx` (`shop_id` ASC),
+  INDEX `gift_fk_05_idx` (`trip_id` ASC),
+  INDEX `gift_fk_01_idx` (`gift_id` ASC),
+  CONSTRAINT `gift_fk_01`
     FOREIGN KEY (`gift_id`)
     REFERENCES `f2016_s1_user16`.`GIFTS` (`gift_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
-  CONSTRAINT `bar_fk_02`
+  CONSTRAINT `gift_fk_02`
     FOREIGN KEY (`room_id`)
     REFERENCES `f2016_s1_user16`.`ROOM` (`room_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
-  CONSTRAINT `bar_fk_03`
+  CONSTRAINT `gift_fk_03`
     FOREIGN KEY (`staff_id`)
     REFERENCES `f2016_s1_user16`.`STAFF` (`staff_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
-  CONSTRAINT `bar_fk_04`
+  CONSTRAINT `gift_fk_04`
     FOREIGN KEY (`shop_id`)
     REFERENCES `f2016_s1_user16`.`WORKAREAS` (`area_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
-  CONSTRAINT `bar_fk_05`
+  CONSTRAINT `gift_fk_05`
     FOREIGN KEY (`trip_id`)
     REFERENCES `f2016_s1_user16`.`TRIP` (`trip_id`)
     ON DELETE RESTRICT
