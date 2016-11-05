@@ -1,1 +1,10 @@
-Google Drive Folder: https://drive.google.com/drive/u/0/folders/0B1zOXWn54g3sVEtjYnFsVE5JWGM
+Google Drive Folder: 
+https://drive.google.com/drive/u/0/folders/0B1zOXWn54g3sVEtjYnFsVE5JWGM
+
+
+
+DB Connection Stuff
+Hostname: ec2-54-226-9-216.compute-1.amazonaws.com
+Port: 3306
+User: f2016_s1_user16
+Password: f2016_s1_user16

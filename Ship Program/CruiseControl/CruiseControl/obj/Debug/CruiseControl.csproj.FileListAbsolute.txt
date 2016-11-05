@@ -1,0 +1,11 @@
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\bin\Debug\CruiseControl.exe.config
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\bin\Debug\CruiseControl.exe
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\bin\Debug\CruiseControl.pdb
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\bin\Debug\MySql.Data.dll
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.csprojResolveAssemblyReference.cache
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.Main_Form.resources
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.Properties.Resources.resources
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.csproj.GenerateResource.Cache
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.exe
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.pdb
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.TestForm.resources
