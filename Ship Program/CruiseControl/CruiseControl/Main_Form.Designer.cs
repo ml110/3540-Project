@@ -53,13 +53,14 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.lblVessel = new System.Windows.Forms.Label();
 			this.lblPass = new System.Windows.Forms.Label();
-			this.lblCrew = new System.Windows.Forms.Label();
+			this.dgvCrew = new System.Windows.Forms.DataGridView();
+			((System.ComponentModel.ISupportInitialize)(this.dgvCrew)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(0, 280);
+			this.label1.Location = new System.Drawing.Point(0, 408);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(89, 13);
 			this.label1.TabIndex = 0;
@@ -69,7 +70,7 @@
 			// 
 			this.lblDBStatus.AutoSize = true;
 			this.lblDBStatus.ForeColor = System.Drawing.Color.Red;
-			this.lblDBStatus.Location = new System.Drawing.Point(88, 280);
+			this.lblDBStatus.Location = new System.Drawing.Point(88, 408);
 			this.lblDBStatus.Name = "lblDBStatus";
 			this.lblDBStatus.Size = new System.Drawing.Size(100, 13);
 			this.lblDBStatus.TabIndex = 1;
@@ -80,7 +81,7 @@
 			this.cbTripSelect.FormattingEnabled = true;
 			this.cbTripSelect.Location = new System.Drawing.Point(94, 43);
 			this.cbTripSelect.Name = "cbTripSelect";
-			this.cbTripSelect.Size = new System.Drawing.Size(48, 21);
+			this.cbTripSelect.Size = new System.Drawing.Size(50, 21);
 			this.cbTripSelect.TabIndex = 2;
 			// 
 			// label2
@@ -94,13 +95,12 @@
 			// 
 			// lblCurrentTrip
 			// 
-			this.lblCurrentTrip.AutoSize = true;
 			this.lblCurrentTrip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.lblCurrentTrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCurrentTrip.ForeColor = System.Drawing.Color.Red;
 			this.lblCurrentTrip.Location = new System.Drawing.Point(94, 18);
 			this.lblCurrentTrip.Name = "lblCurrentTrip";
-			this.lblCurrentTrip.Size = new System.Drawing.Size(40, 22);
+			this.lblCurrentTrip.Size = new System.Drawing.Size(50, 22);
 			this.lblCurrentTrip.TabIndex = 4;
 			this.lblCurrentTrip.Text = "N/A";
 			// 
@@ -224,33 +224,31 @@
 			this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.label6.Location = new System.Drawing.Point(216, 8);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(536, 248);
+			this.label6.Size = new System.Drawing.Size(544, 432);
 			this.label6.TabIndex = 17;
 			// 
 			// lblCurrentDate
 			// 
 			this.lblCurrentDate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-			this.lblCurrentDate.Location = new System.Drawing.Point(0, 296);
+			this.lblCurrentDate.Location = new System.Drawing.Point(0, 424);
 			this.lblCurrentDate.Name = "lblCurrentDate";
 			this.lblCurrentDate.Size = new System.Drawing.Size(184, 16);
 			this.lblCurrentDate.TabIndex = 18;
-			this.lblCurrentDate.Text = "---";
+			this.lblCurrentDate.Text = "Connection Time Here";
 			// 
 			// lblTripString
 			// 
-			this.lblTripString.AutoSize = true;
-			this.lblTripString.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblTripString.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblTripString.ForeColor = System.Drawing.Color.Red;
 			this.lblTripString.Location = new System.Drawing.Point(224, 16);
 			this.lblTripString.Name = "lblTripString";
-			this.lblTripString.Size = new System.Drawing.Size(163, 22);
+			this.lblTripString.Size = new System.Drawing.Size(528, 56);
 			this.lblTripString.TabIndex = 19;
 			this.lblTripString.Text = "NO TRIP SELECTED";
 			// 
 			// label8
 			// 
-			this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label8.BackColor = System.Drawing.SystemColors.ControlLight;
 			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label8.Location = new System.Drawing.Point(224, 80);
 			this.label8.Name = "label8";
@@ -260,54 +258,67 @@
 			// 
 			// label9
 			// 
-			this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(504, 80);
+			this.label9.Location = new System.Drawing.Point(224, 272);
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(112, 18);
+			this.label9.Size = new System.Drawing.Size(224, 18);
 			this.label9.TabIndex = 22;
-			this.label9.Text = "PASS. ABOARD";
+			this.label9.Text = "PASSENGERS STATUS";
 			// 
 			// label10
 			// 
-			this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(632, 80);
+			this.label10.Location = new System.Drawing.Point(456, 80);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(112, 18);
+			this.label10.Size = new System.Drawing.Size(224, 18);
 			this.label10.TabIndex = 23;
-			this.label10.Text = "CREW ABOARD";
+			this.label10.Text = "CREW STATUS";
 			// 
 			// lblVessel
 			// 
-			this.lblVessel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.lblVessel.Location = new System.Drawing.Point(224, 104);
+			this.lblVessel.BackColor = System.Drawing.SystemColors.ActiveBorder;
+			this.lblVessel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.lblVessel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblVessel.Location = new System.Drawing.Point(224, 96);
 			this.lblVessel.Name = "lblVessel";
-			this.lblVessel.Size = new System.Drawing.Size(160, 144);
+			this.lblVessel.Size = new System.Drawing.Size(224, 144);
 			this.lblVessel.TabIndex = 24;
 			// 
 			// lblPass
 			// 
-			this.lblPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.lblPass.Location = new System.Drawing.Point(504, 104);
+			this.lblPass.BackColor = System.Drawing.SystemColors.ActiveBorder;
+			this.lblPass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.lblPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblPass.Location = new System.Drawing.Point(224, 288);
 			this.lblPass.Name = "lblPass";
-			this.lblPass.Size = new System.Drawing.Size(112, 144);
+			this.lblPass.Size = new System.Drawing.Size(224, 144);
 			this.lblPass.TabIndex = 25;
 			// 
-			// lblCrew
+			// dgvCrew
 			// 
-			this.lblCrew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.lblCrew.Location = new System.Drawing.Point(632, 104);
-			this.lblCrew.Name = "lblCrew";
-			this.lblCrew.Size = new System.Drawing.Size(112, 144);
-			this.lblCrew.TabIndex = 26;
+			this.dgvCrew.AllowUserToAddRows = false;
+			this.dgvCrew.AllowUserToDeleteRows = false;
+			this.dgvCrew.AllowUserToResizeColumns = false;
+			this.dgvCrew.AllowUserToResizeRows = false;
+			this.dgvCrew.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+			this.dgvCrew.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.dgvCrew.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+			this.dgvCrew.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.dgvCrew.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+			this.dgvCrew.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvCrew.GridColor = System.Drawing.SystemColors.ActiveBorder;
+			this.dgvCrew.Location = new System.Drawing.Point(456, 96);
+			this.dgvCrew.Name = "dgvCrew";
+			this.dgvCrew.RowHeadersVisible = false;
+			this.dgvCrew.Size = new System.Drawing.Size(296, 336);
+			this.dgvCrew.TabIndex = 26;
 			// 
 			// Main_Form
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(753, 313);
-			this.Controls.Add(this.lblCrew);
+			this.ClientSize = new System.Drawing.Size(763, 447);
+			this.Controls.Add(this.dgvCrew);
 			this.Controls.Add(this.lblPass);
 			this.Controls.Add(this.lblVessel);
 			this.Controls.Add(this.label10);
@@ -336,6 +347,7 @@
 			this.Name = "Main_Form";
 			this.Text = "CRUISE CONTROL: Set Sail For Fail";
 			this.Load += new System.EventHandler(this.Main_Form_Load);
+			((System.ComponentModel.ISupportInitialize)(this.dgvCrew)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -368,7 +380,7 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label lblVessel;
 		private System.Windows.Forms.Label lblPass;
-		private System.Windows.Forms.Label lblCrew;
+		private System.Windows.Forms.DataGridView dgvCrew;
     }
 }
 

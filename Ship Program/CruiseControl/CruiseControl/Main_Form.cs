@@ -120,6 +120,8 @@ namespace CruiseControl
 			//triggers update on the right-side information
 			updateTripString();
 			updateVessel();
+			updatePassengers();
+			updateCrew();
         }
 
 /////// Next several methods are for updating the trip information on the right ///////////////////
@@ -165,6 +167,51 @@ namespace CruiseControl
 			sRead.Close();
 
 			lblVessel.Text = vesselString;
+		}
+
+		//METHOD FOR UPDATNG PASSENGER COUNT
+		private void updatePassengers()
+		{
+			//first grab the total passenger count
+			command.CommandText = "SELECT count(pass_id) AS NUMPASS FROM ROOM_PASSENGER WHERE trip_id = '" + getTripNum() + "';";
+			command.Connection = connection;
+			MySqlDataReader sRead = command.ExecuteReader();
+			string passengerString = "";
+
+			while (sRead.Read())
+			{
+				passengerString = sRead["NUMPASS"] + "/1428" + "\n";
+			}
+
+			sRead.Close();
+
+			//now get the number of rooms occupied
+			command.CommandText = "SELECT count(isBillHolder) AS NUMROOMS FROM ROOM_PASSENGER WHERE trip_id = '" + getTripNum() + "' AND isBillHolder = 1;";
+			sRead = command.ExecuteReader();
+
+			while (sRead.Read())
+			{
+				passengerString += sRead["NUMROOMS"] + " rooms occupied";
+			}
+
+			sRead.Close();
+
+			lblPass.Text = passengerString;
+		}
+
+		//METHOD FOR UPDATING CREW STATUS
+		private void updateCrew()
+		{
+			DataSet ds = new DataSet();
+			dgvCrew.DataSource = null;
+			MySqlDataAdapter MDA;
+			int totalCrew = 0;
+
+			string query = "SELECT D.dept_name AS DEPARTMENT, count(S.staff_id) AS NUMSTAFF FROM STAFF AS S INNER JOIN JOBS AS J ON S.job_id = J.job_id INNER JOIN DEPARTMENT AS D ON J.dept_id = D.dept_id WHERE S.ship_id = '" + shipNum + "' GROUP BY D.dept_id";
+			MDA = new MySqlDataAdapter(query, connection);
+			MDA.Fill(ds, "DEPT");
+
+			dgvCrew.DataSource = ds.Tables["DEPT"];
 		}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
