@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblDBStatus = new System.Windows.Forms.Label();
 			this.cbTripSelect = new System.Windows.Forms.ComboBox();
@@ -35,7 +36,6 @@
 			this.lblCurrentTrip = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnSetTripNum = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
 			this.btnTripPlan = new System.Windows.Forms.Button();
 			this.btnMap = new System.Windows.Forms.Button();
@@ -54,6 +54,7 @@
 			this.lblVessel = new System.Windows.Forms.Label();
 			this.lblPass = new System.Windows.Forms.Label();
 			this.dgvCrew = new System.Windows.Forms.DataGridView();
+			this.lblTotalCrew = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCrew)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -124,19 +125,6 @@
 			this.btnSetTripNum.UseVisualStyleBackColor = false;
 			this.btnSetTripNum.Click += new System.EventHandler(this.btnSetTripNum_Click);
 			// 
-			// button1
-			// 
-			this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-			this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(112, 216);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(80, 24);
-			this.button1.TabIndex = 7;
-			this.button1.Text = "T E S T";
-			this.button1.UseVisualStyleBackColor = false;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
 			// label4
 			// 
 			this.label4.BackColor = System.Drawing.Color.Transparent;
@@ -148,6 +136,7 @@
 			// 
 			// btnTripPlan
 			// 
+			this.btnTripPlan.Enabled = false;
 			this.btnTripPlan.Location = new System.Drawing.Point(8, 88);
 			this.btnTripPlan.Name = "btnTripPlan";
 			this.btnTripPlan.Size = new System.Drawing.Size(94, 37);
@@ -157,6 +146,7 @@
 			// 
 			// btnMap
 			// 
+			this.btnMap.Enabled = false;
 			this.btnMap.Location = new System.Drawing.Point(8, 128);
 			this.btnMap.Name = "btnMap";
 			this.btnMap.Size = new System.Drawing.Size(94, 37);
@@ -166,6 +156,7 @@
 			// 
 			// btnBill
 			// 
+			this.btnBill.Enabled = false;
 			this.btnBill.Location = new System.Drawing.Point(8, 208);
 			this.btnBill.Name = "btnBill";
 			this.btnBill.Size = new System.Drawing.Size(94, 37);
@@ -175,15 +166,18 @@
 			// 
 			// btnSchedule
 			// 
+			this.btnSchedule.Enabled = false;
 			this.btnSchedule.Location = new System.Drawing.Point(8, 168);
 			this.btnSchedule.Name = "btnSchedule";
 			this.btnSchedule.Size = new System.Drawing.Size(94, 37);
 			this.btnSchedule.TabIndex = 11;
 			this.btnSchedule.Text = "Scheduling";
 			this.btnSchedule.UseVisualStyleBackColor = true;
+			this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
 			// 
 			// btnDinner
 			// 
+			this.btnDinner.Enabled = false;
 			this.btnDinner.Location = new System.Drawing.Point(104, 168);
 			this.btnDinner.Name = "btnDinner";
 			this.btnDinner.Size = new System.Drawing.Size(95, 37);
@@ -193,6 +187,7 @@
 			// 
 			// btnGift
 			// 
+			this.btnGift.Enabled = false;
 			this.btnGift.Location = new System.Drawing.Point(104, 128);
 			this.btnGift.Name = "btnGift";
 			this.btnGift.Size = new System.Drawing.Size(95, 37);
@@ -202,6 +197,7 @@
 			// 
 			// btnBar
 			// 
+			this.btnBar.Enabled = false;
 			this.btnBar.Location = new System.Drawing.Point(104, 88);
 			this.btnBar.Name = "btnBar";
 			this.btnBar.Size = new System.Drawing.Size(95, 37);
@@ -310,14 +306,25 @@
 			this.dgvCrew.Location = new System.Drawing.Point(456, 96);
 			this.dgvCrew.Name = "dgvCrew";
 			this.dgvCrew.RowHeadersVisible = false;
-			this.dgvCrew.Size = new System.Drawing.Size(296, 336);
+			this.dgvCrew.Size = new System.Drawing.Size(296, 304);
 			this.dgvCrew.TabIndex = 26;
+			// 
+			// lblTotalCrew
+			// 
+			this.lblTotalCrew.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.lblTotalCrew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblTotalCrew.Location = new System.Drawing.Point(456, 408);
+			this.lblTotalCrew.Name = "lblTotalCrew";
+			this.lblTotalCrew.Size = new System.Drawing.Size(296, 23);
+			this.lblTotalCrew.TabIndex = 27;
+			this.lblTotalCrew.Text = "TOTAL CREW:";
 			// 
 			// Main_Form
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(763, 447);
+			this.Controls.Add(this.lblTotalCrew);
 			this.Controls.Add(this.dgvCrew);
 			this.Controls.Add(this.lblPass);
 			this.Controls.Add(this.lblVessel);
@@ -333,7 +340,6 @@
 			this.Controls.Add(this.btnSchedule);
 			this.Controls.Add(this.btnMap);
 			this.Controls.Add(this.btnTripPlan);
-			this.Controls.Add(this.button1);
 			this.Controls.Add(this.btnSetTripNum);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.lblCurrentTrip);
@@ -344,6 +350,7 @@
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label6);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Main_Form";
 			this.Text = "CRUISE CONTROL: Set Sail For Fail";
 			this.Load += new System.EventHandler(this.Main_Form_Load);
@@ -361,8 +368,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblCurrentTrip;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSetTripNum;
-        private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnSetTripNum;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnTripPlan;
         private System.Windows.Forms.Button btnMap;
@@ -381,6 +387,7 @@
 		private System.Windows.Forms.Label lblVessel;
 		private System.Windows.Forms.Label lblPass;
 		private System.Windows.Forms.DataGridView dgvCrew;
+		private System.Windows.Forms.Label lblTotalCrew;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿///////////////////////////////////////////////////////////////////////////////////////////////////
 /* CSIS 3540 - CLIENT SERVER SYSTEMS
- * CRUISE LINE PROJECT - SHIPBOARD APPLICATION
+ * CRUISE LINE PROJECT - SHIPBOARD APPLICATION - MAIN FORM
  * 
  * Manupreet Kaur
  * Pawanpreet Kaur
@@ -117,6 +117,9 @@ namespace CruiseControl
             lblCurrentTrip.Text = tNumber;
             lblCurrentTrip.ForeColor = System.Drawing.Color.Green;
 
+			//enables the child-form controls
+			btnSchedule.Enabled = true;
+
 			//triggers update on the right-side information
 			updateTripString();
 			updateVessel();
@@ -212,17 +215,24 @@ namespace CruiseControl
 			MDA.Fill(ds, "DEPT");
 
 			dgvCrew.DataSource = ds.Tables["DEPT"];
+			
+			for (int i = 0; i < dgvCrew.Rows.Count; i++)
+			{
+				totalCrew += Int16.Parse(dgvCrew.Rows[i].Cells[1].Value.ToString());
+			}
+
+			lblTotalCrew.Text = "TOTAL CREW: " + totalCrew;
 		}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+//////// End of right-side information update code ///////////////////////////////////////////////////
 
-/////// TEST STUFF, REMOVE FROM FINAL VERSION /////////////////////////////
-        private void button1_Click(object sender, EventArgs e)
-        {
-            TestForm test = new TestForm(getTripNum());
-            test.Visible = true;
-        }
-//////////////////////////////////////////////////////////////////////////
+		//starts the scheduling form
+		private void btnSchedule_Click(object sender, EventArgs e)
+		{
+			ScheduleForm scheduler = new ScheduleForm(getTripNum(), connection, command);
+			scheduler.Visible = true;
+		}
+
     }
 }
 
