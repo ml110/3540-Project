@@ -1,4 +1,4 @@
-SELECT SS.shift_date AS SHIFTDATE, concat(SH.shift_start, " - " , SH.shift_end) AS SHIFT, concat(ST.staff_lastname, ", ", ST.staff_firstname) AS STAFF, J.job_title, WA.area_name, D.dept_name FROM STAFF_SHIFT AS SS
+SELECT SS.shift_date AS SHIFTDATE, concat(SH.shift_start, " - " , SH.shift_end) AS SHIFT, concat(ST.staff_lastname, ", ", ST.staff_firstname) AS STAFF, J.job_title AS DUTY, WA.area_name AS DUTYAREA, D.dept_name AS DEPT FROM STAFF_SHIFT AS SS
 INNER JOIN SHIFT AS SH ON SS.shift_id = SH.shift_id
 INNER JOIN STAFF AS ST ON SS.staff_id = ST.staff_id
 INNER JOIN JOBS AS J ON ST.job_id = J.job_id
