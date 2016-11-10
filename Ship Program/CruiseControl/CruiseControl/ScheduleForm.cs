@@ -2,12 +2,7 @@
 /* CSIS 3540 - CLIENT SERVER SYSTEMS
  * CRUISE LINE PROJECT - SHIPBOARD APPLICATION - SCHEDULE MANAGER FORM
  * 
- * Manupreet Kaur
- * Pawanpreet Kaur
- * Matthew Lai
- * Amanda Lee
- * Shaun Lu
- * Manjot Sangha
+ * This form is for managing the schedule of the staff aboard the ship on a given trip
  * 
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////
