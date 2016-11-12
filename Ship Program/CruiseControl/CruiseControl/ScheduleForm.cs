@@ -29,6 +29,10 @@ namespace CruiseControl
 		MySqlCommand command;
 
 		private int tripNum;
+		private int shiftID;
+		private int empID;
+		private string shiftStart = "";
+		private string shiftEnd = "";
 		
 		public ScheduleForm(int TN, MySqlConnection con, MySqlCommand cmd)
 		{
@@ -147,7 +151,7 @@ namespace CruiseControl
 			cbName.Items.Clear();
 			cbName.Text = null;
 
-			string empQuery = "SELECT concat(upper(J.job_title), \" \", ST.staff_firstname, \" \", ST.staff_lastname) AS STAFF FROM STAFF AS ST";
+			string empQuery = "SELECT concat(upper(J.job_title_code), \". \", ST.staff_firstname, \" \", ST.staff_lastname) AS STAFF FROM STAFF AS ST";
 				empQuery += " INNER JOIN TRIP AS T ON ST.ship_id = T.ship_id";
 				empQuery += " INNER JOIN JOBS AS J ON ST.job_id = J.job_id";
 				empQuery += " INNER JOIN DEPARTMENT AS D ON J.dept_id = D.dept_id";
@@ -161,6 +165,52 @@ namespace CruiseControl
 
 			setupComboBox(cbAddArea, waQuery);
 			setupComboBox(cbName, empQuery);
+
+			//enable the controls
+			if (cbAddDept.Text != null)
+			{
+				cbAddArea.Enabled = true;
+				cbName.Enabled = true;
+				rbAfternoon.Enabled = true;
+				rbEvening.Enabled = true;
+				rbMorning.Enabled = true;
+			}
 		}
+
+/////// Next several methods for insertion prep ////////////////////////////////////////////////////////
+		
+		//sets the shift times from the radio buttons
+		private void setShiftTimes()
+		{
+			if (rbMorning.Checked == true)
+			{
+				shiftStart = "00:00:00";
+				shiftEnd = "08:00:00";
+			}
+			else
+			{
+				if (rbAfternoon.Checked == true)
+				{
+					shiftStart = "08:00:00";
+					shiftEnd = "16:00:00";
+				}
+				else
+				{
+					if (rbEvening.Checked == true)
+					{
+						shiftStart = "16:00:00";
+						shiftEnd = "23:00:00";
+					}
+				}
+			}
+		}
+
+		//Insert the values into the database
+		private void btnInsert_Click(object sender, EventArgs e)
+		{
+
+		}
+
+/////// End of insertion prep code ////////////////////////////////////////////////////////////////////
 	}
 }

@@ -32,21 +32,21 @@
 			this.cbDay = new System.Windows.Forms.ComboBox();
 			this.dgvSched = new System.Windows.Forms.DataGridView();
 			this.gbDisplay = new System.Windows.Forms.GroupBox();
-			this.cbDept = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.cbDept = new System.Windows.Forms.ComboBox();
 			this.gbAdd = new System.Windows.Forms.GroupBox();
-			this.cbAddDept = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.cbName = new System.Windows.Forms.ComboBox();
-			this.cbAddArea = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.rbMorning = new System.Windows.Forms.RadioButton();
-			this.rbAfternoon = new System.Windows.Forms.RadioButton();
-			this.rbEvening = new System.Windows.Forms.RadioButton();
 			this.btnInsert = new System.Windows.Forms.Button();
+			this.rbEvening = new System.Windows.Forms.RadioButton();
+			this.rbAfternoon = new System.Windows.Forms.RadioButton();
+			this.rbMorning = new System.Windows.Forms.RadioButton();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.cbAddArea = new System.Windows.Forms.ComboBox();
+			this.cbName = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.cbAddDept = new System.Windows.Forms.ComboBox();
 			this.gbDelete = new System.Windows.Forms.GroupBox();
 			((System.ComponentModel.ISupportInitialize)(this.dgvSched)).BeginInit();
 			this.gbDisplay.SuspendLayout();
@@ -92,15 +92,14 @@
 			this.gbDisplay.TabStop = false;
 			this.gbDisplay.Text = "DISPLAY OPTIONS";
 			// 
-			// cbDept
+			// label2
 			// 
-			this.cbDept.FormattingEnabled = true;
-			this.cbDept.Location = new System.Drawing.Point(8, 88);
-			this.cbDept.Name = "cbDept";
-			this.cbDept.Size = new System.Drawing.Size(200, 21);
-			this.cbDept.TabIndex = 0;
-			this.cbDept.Text = "-----";
-			this.cbDept.SelectedIndexChanged += new System.EventHandler(this.cbDept_SelectedIndexChanged);
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(8, 72);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(62, 13);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Department";
 			// 
 			// label1
 			// 
@@ -111,14 +110,15 @@
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Day";
 			// 
-			// label2
+			// cbDept
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(8, 72);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(62, 13);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Department";
+			this.cbDept.FormattingEnabled = true;
+			this.cbDept.Location = new System.Drawing.Point(8, 88);
+			this.cbDept.Name = "cbDept";
+			this.cbDept.Size = new System.Drawing.Size(200, 21);
+			this.cbDept.TabIndex = 0;
+			this.cbDept.Text = "-----";
+			this.cbDept.SelectedIndexChanged += new System.EventHandler(this.cbDept_SelectedIndexChanged);
 			// 
 			// gbAdd
 			// 
@@ -140,57 +140,52 @@
 			this.gbAdd.TabStop = false;
 			this.gbAdd.Text = "SCHEDULE NEW SHIFT";
 			// 
-			// cbAddDept
+			// btnInsert
 			// 
-			this.cbAddDept.FormattingEnabled = true;
-			this.cbAddDept.Location = new System.Drawing.Point(8, 40);
-			this.cbAddDept.Name = "cbAddDept";
-			this.cbAddDept.Size = new System.Drawing.Size(200, 21);
-			this.cbAddDept.TabIndex = 0;
-			this.cbAddDept.SelectedIndexChanged += new System.EventHandler(this.cbAddDept_SelectedIndexChanged);
+			this.btnInsert.Enabled = false;
+			this.btnInsert.Location = new System.Drawing.Point(8, 224);
+			this.btnInsert.Name = "btnInsert";
+			this.btnInsert.Size = new System.Drawing.Size(200, 56);
+			this.btnInsert.TabIndex = 12;
+			this.btnInsert.Text = "INSERT SHIFT TO CURRENT DAY";
+			this.btnInsert.UseVisualStyleBackColor = true;
+			this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
 			// 
-			// label3
+			// rbEvening
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(8, 24);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(62, 13);
-			this.label3.TabIndex = 3;
-			this.label3.Text = "Department";
+			this.rbEvening.AutoSize = true;
+			this.rbEvening.Enabled = false;
+			this.rbEvening.Location = new System.Drawing.Point(144, 136);
+			this.rbEvening.Name = "rbEvening";
+			this.rbEvening.Size = new System.Drawing.Size(64, 17);
+			this.rbEvening.TabIndex = 11;
+			this.rbEvening.TabStop = true;
+			this.rbEvening.Text = "Evening";
+			this.rbEvening.UseVisualStyleBackColor = true;
 			// 
-			// label4
+			// rbAfternoon
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(8, 168);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(60, 13);
-			this.label4.TabIndex = 4;
-			this.label4.Text = "Staff Name";
+			this.rbAfternoon.AutoSize = true;
+			this.rbAfternoon.Enabled = false;
+			this.rbAfternoon.Location = new System.Drawing.Point(72, 136);
+			this.rbAfternoon.Name = "rbAfternoon";
+			this.rbAfternoon.Size = new System.Drawing.Size(71, 17);
+			this.rbAfternoon.TabIndex = 10;
+			this.rbAfternoon.TabStop = true;
+			this.rbAfternoon.Text = "Afternoon";
+			this.rbAfternoon.UseVisualStyleBackColor = true;
 			// 
-			// cbName
+			// rbMorning
 			// 
-			this.cbName.FormattingEnabled = true;
-			this.cbName.Location = new System.Drawing.Point(8, 184);
-			this.cbName.Name = "cbName";
-			this.cbName.Size = new System.Drawing.Size(200, 21);
-			this.cbName.TabIndex = 5;
-			// 
-			// cbAddArea
-			// 
-			this.cbAddArea.FormattingEnabled = true;
-			this.cbAddArea.Location = new System.Drawing.Point(8, 88);
-			this.cbAddArea.Name = "cbAddArea";
-			this.cbAddArea.Size = new System.Drawing.Size(200, 21);
-			this.cbAddArea.TabIndex = 6;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(8, 72);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(54, 13);
-			this.label5.TabIndex = 7;
-			this.label5.Text = "Duty Area";
+			this.rbMorning.AutoSize = true;
+			this.rbMorning.Enabled = false;
+			this.rbMorning.Location = new System.Drawing.Point(8, 136);
+			this.rbMorning.Name = "rbMorning";
+			this.rbMorning.Size = new System.Drawing.Size(63, 17);
+			this.rbMorning.TabIndex = 9;
+			this.rbMorning.TabStop = true;
+			this.rbMorning.Text = "Morning";
+			this.rbMorning.UseVisualStyleBackColor = true;
 			// 
 			// label6
 			// 
@@ -201,47 +196,59 @@
 			this.label6.TabIndex = 8;
 			this.label6.Text = "Shift Type";
 			// 
-			// rbMorning
+			// label5
 			// 
-			this.rbMorning.AutoSize = true;
-			this.rbMorning.Location = new System.Drawing.Point(8, 136);
-			this.rbMorning.Name = "rbMorning";
-			this.rbMorning.Size = new System.Drawing.Size(63, 17);
-			this.rbMorning.TabIndex = 9;
-			this.rbMorning.TabStop = true;
-			this.rbMorning.Text = "Morning";
-			this.rbMorning.UseVisualStyleBackColor = true;
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(8, 72);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(54, 13);
+			this.label5.TabIndex = 7;
+			this.label5.Text = "Duty Area";
 			// 
-			// rbAfternoon
+			// cbAddArea
 			// 
-			this.rbAfternoon.AutoSize = true;
-			this.rbAfternoon.Location = new System.Drawing.Point(72, 136);
-			this.rbAfternoon.Name = "rbAfternoon";
-			this.rbAfternoon.Size = new System.Drawing.Size(71, 17);
-			this.rbAfternoon.TabIndex = 10;
-			this.rbAfternoon.TabStop = true;
-			this.rbAfternoon.Text = "Afternoon";
-			this.rbAfternoon.UseVisualStyleBackColor = true;
+			this.cbAddArea.Enabled = false;
+			this.cbAddArea.FormattingEnabled = true;
+			this.cbAddArea.Location = new System.Drawing.Point(8, 88);
+			this.cbAddArea.Name = "cbAddArea";
+			this.cbAddArea.Size = new System.Drawing.Size(200, 21);
+			this.cbAddArea.TabIndex = 6;
 			// 
-			// rbEvening
+			// cbName
 			// 
-			this.rbEvening.AutoSize = true;
-			this.rbEvening.Location = new System.Drawing.Point(144, 136);
-			this.rbEvening.Name = "rbEvening";
-			this.rbEvening.Size = new System.Drawing.Size(64, 17);
-			this.rbEvening.TabIndex = 11;
-			this.rbEvening.TabStop = true;
-			this.rbEvening.Text = "Evening";
-			this.rbEvening.UseVisualStyleBackColor = true;
+			this.cbName.Enabled = false;
+			this.cbName.FormattingEnabled = true;
+			this.cbName.Location = new System.Drawing.Point(8, 184);
+			this.cbName.Name = "cbName";
+			this.cbName.Size = new System.Drawing.Size(200, 21);
+			this.cbName.TabIndex = 5;
 			// 
-			// btnInsert
+			// label4
 			// 
-			this.btnInsert.Location = new System.Drawing.Point(8, 224);
-			this.btnInsert.Name = "btnInsert";
-			this.btnInsert.Size = new System.Drawing.Size(200, 56);
-			this.btnInsert.TabIndex = 12;
-			this.btnInsert.Text = "INSERT SHIFT";
-			this.btnInsert.UseVisualStyleBackColor = true;
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(8, 168);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(60, 13);
+			this.label4.TabIndex = 4;
+			this.label4.Text = "Staff Name";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(8, 24);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(62, 13);
+			this.label3.TabIndex = 3;
+			this.label3.Text = "Department";
+			// 
+			// cbAddDept
+			// 
+			this.cbAddDept.FormattingEnabled = true;
+			this.cbAddDept.Location = new System.Drawing.Point(8, 40);
+			this.cbAddDept.Name = "cbAddDept";
+			this.cbAddDept.Size = new System.Drawing.Size(200, 21);
+			this.cbAddDept.TabIndex = 0;
+			this.cbAddDept.SelectedIndexChanged += new System.EventHandler(this.cbAddDept_SelectedIndexChanged);
 			// 
 			// gbDelete
 			// 
