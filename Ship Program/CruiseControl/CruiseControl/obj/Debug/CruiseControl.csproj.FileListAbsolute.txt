@@ -8,7 +8,6 @@ C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Progra
 C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.csproj.GenerateResource.Cache
 C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.exe
 C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.pdb
-C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.TestForm.resources
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\bin\Debug\CruiseControl.exe.config
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.exe
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.pdb
@@ -20,3 +19,4 @@ D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.Properties.Resources.resources
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.csproj.GenerateResource.Cache
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.scheduleForm.resources
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.ScheduleForm.resources

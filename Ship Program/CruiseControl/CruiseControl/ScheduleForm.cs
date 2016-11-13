@@ -29,10 +29,12 @@ namespace CruiseControl
 		MySqlCommand command;
 
 		private int tripNum;
-		private int shiftID;
-		private int empID;
 		private string shiftStart = "";
 		private string shiftEnd = "";
+        private int staffID;
+
+        //I need this for reasons
+        Cruncher beepBoop;
 		
 		public ScheduleForm(int TN, MySqlConnection con, MySqlCommand cmd)
 		{
@@ -40,6 +42,8 @@ namespace CruiseControl
 			connection = con;
 			command = cmd;
 			tripNum = TN;
+
+            beepBoop = new Cruncher(connection, command);
 		}
 
 		private void ScheduleForm_Load(object sender, EventArgs e)
@@ -151,7 +155,7 @@ namespace CruiseControl
 			cbName.Items.Clear();
 			cbName.Text = null;
 
-			string empQuery = "SELECT concat(upper(J.job_title_code), \". \", ST.staff_firstname, \" \", ST.staff_lastname) AS STAFF FROM STAFF AS ST";
+			string empQuery = "SELECT concat(\"[\", ST.staff_id, \"] \", upper(J.job_title_code), \". \", ST.staff_firstname, \" \", ST.staff_lastname) AS STAFF FROM STAFF AS ST";
 				empQuery += " INNER JOIN TRIP AS T ON ST.ship_id = T.ship_id";
 				empQuery += " INNER JOIN JOBS AS J ON ST.job_id = J.job_id";
 				empQuery += " INNER JOIN DEPARTMENT AS D ON J.dept_id = D.dept_id";
@@ -175,6 +179,8 @@ namespace CruiseControl
 				rbEvening.Enabled = true;
 				rbMorning.Enabled = true;
 			}
+
+            validateButton();
 		}
 
 /////// Next several methods for insertion prep ////////////////////////////////////////////////////////
@@ -205,12 +211,121 @@ namespace CruiseControl
 			}
 		}
 
+        //Ensure all the fields are filled, then enable the insert button
+        private void validateButton()
+        {
+            bool flag = false;
+            setShiftTimes();
+            Debug.WriteLine("CHECK START: " + flag);
+            Debug.WriteLine(cbAddDept.Text + " " + cbAddArea.Text + " " + cbName.Text + " " + shiftStart);
+
+            if (cbAddDept.Text != null && cbAddArea.Text != null && cbName.Text != null && shiftStart != "")
+            {
+                flag = true;
+            }
+
+            if (flag == true)
+            {
+                btnInsert.Enabled = true;
+            }
+            else
+            {
+                btnInsert.Enabled = false;
+            }
+
+            Debug.WriteLine("CHECK END: " + flag);
+        }
+
 		//Insert the values into the database
 		private void btnInsert_Click(object sender, EventArgs e)
 		{
+            //setShiftTimes();
+            int areaID = beepBoop.getPK("WORKAREAS", "area_id", "area_name", cbAddArea.Text.Trim());
+            string staffIDstring = cbName.Text.Split(']')[0];
+            staffIDstring = staffIDstring.Split('[')[1];
 
+            int shiftID = beepBoop.getShiftID(tripNum, shiftStart, shiftEnd, areaID);
+            staffID = Int16.Parse(staffIDstring);
+            string shiftDate = cbDay.Text.Trim();
+
+            Debug.WriteLine(shiftID + " " + staffID + " " + shiftDate);
+
+            command.CommandText = "INSERT INTO STAFF_SHIFT(shift_id, staff_id, shift_date) VALUES('" + shiftID + "', '" + staffID + "', '" + shiftDate + "')";
+            command.Connection = connection;
+            MySqlDataReader sRead = command.ExecuteReader();
+            sRead.Close();
+
+            string theDay = cbDay.Text.Trim();
+            updateDisplay(theDay);
 		}
 
+        private void cbAddArea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            validateButton();
+        }
+
+        private void cbName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            validateButton();
+        }
+
 /////// End of insertion prep code ////////////////////////////////////////////////////////////////////
+
+        //Cancel the selected shift from the DGV
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //NOTE: To delete from STAFF_SHIFT, you need the shift_id, staff_id, and the shift_day
+            string deleteDay;
+            int deleteShift;
+            int deleteStaff;
+
+            //GETTING THE SHIFT DATE
+            string day = dgvSched.SelectedRows[0].Cells[0].Value.ToString();
+            DateTime dateFormat = DateTime.Parse(day);
+            deleteDay = dateFormat.ToString("yyyy-MM-dd");
+            deleteDay = deleteDay.Substring(0, 10).Trim();
+
+            //GETTING THE SHIFT ID
+            string aName = dgvSched.SelectedRows[0].Cells[4].Value.ToString();
+            int aID = beepBoop.getPK("WORKAREAS", "area_id", "area_name", aName);
+            string shiftTime = dgvSched.SelectedRows[0].Cells[1].Value.ToString();
+            deleteShift = beepBoop.getShiftID(tripNum, shiftTime.Split('-')[0].Trim(), shiftTime.Split('-')[1].Trim(), aID);
+
+            //GETTING THE STAFF ID
+            string jName = dgvSched.SelectedRows[0].Cells[3].Value.ToString();
+            int jobID = beepBoop.getPK("JOBS", "job_id", "job_title", jName);
+            string fName = dgvSched.SelectedRows[0].Cells[2].Value.ToString();
+            fName = fName.Split(',')[1].Trim();
+            string lName = dgvSched.SelectedRows[0].Cells[2].Value.ToString();
+            lName = lName.Split(',')[0].Trim();
+            int shipID = beepBoop.getPK("TRIP", "ship_id", "ship_id", tripNum.ToString());
+            deleteStaff = beepBoop.getStaffID(shipID, fName, lName, jobID);
+
+            //MessageBox.Show(deleteStaff.ToString());
+            command.CommandText = "DELETE FROM STAFF_SHIFT WHERE shift_id = '" + deleteShift + "' AND staff_id = '" + deleteStaff + "' AND shift_date = \"" + deleteDay + "\";";
+            command.Connection = connection;
+            MySqlDataReader sRead = command.ExecuteReader();
+            sRead.Close();
+
+            string theDay = cbDay.Text.Trim();
+            updateDisplay(theDay);
+        }
+
+        private void validateDelete()
+        {
+            if (dgvSched.SelectedRows != null)
+            {
+                btnCancel.Enabled = true;
+            }
+            else
+            {
+                btnCancel.Enabled = false;
+            }
+        }
+
+        private void dgvSched_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            validateDelete();
+        }
 	}
 }
