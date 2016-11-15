@@ -48,18 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cruncher.cs" />
-    <Compile Include="DeckMapForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DeckMapForm.designer.cs">
-      <DependentUpon>DeckMapForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormPassenger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPassenger.designer.cs">
-      <DependentUpon>FormPassenger.cs</DependentUpon>
+    <Compile Include="FormPassenger.Designer.cs" />
+    <Compile Include="MapForm.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MapForm.Designer.cs" />
     <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,11 +74,11 @@
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TRIP.cs" />
-    <EmbeddedResource Include="DeckMapForm.resx">
-      <DependentUpon>DeckMapForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormPassenger.resx">
       <DependentUpon>FormPassenger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapForm.resx">
+      <DependentUpon>MapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>

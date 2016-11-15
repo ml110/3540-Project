@@ -47,3 +47,6 @@ C:\Users\300206571\Downloads\ShipMap v1 done\ShipMap v2\ShipMap\obj\Debug\ShipMa
 C:\Users\300206571\Downloads\ShipMap v1 done\ShipMap v2\ShipMap\obj\Debug\ShipMap.Properties.Resources.resources
 C:\Users\300206571\Downloads\ShipMap v1 done\ShipMap v2\ShipMap\obj\Debug\ShipMap.csproj.GenerateResource.Cache
 C:\Users\300206571\Downloads\ShipMap v1 done\ShipMap v2\ShipMap\obj\Debug\ShipMap.FormPassenger.resources
+D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\MapForEmp v1\ShipMap\bin\Debug\ShipMap.exe.config
+D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\MapForEmp v1\ShipMap\obj\Debug\ShipMap.exe
+D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\MapForEmp v1\ShipMap\obj\Debug\ShipMap.pdb

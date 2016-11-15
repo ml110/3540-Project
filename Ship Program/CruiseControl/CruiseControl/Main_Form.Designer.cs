@@ -153,6 +153,7 @@
 			this.btnMap.TabIndex = 10;
 			this.btnMap.Text = "Deck Map";
 			this.btnMap.UseVisualStyleBackColor = true;
+			this.btnMap.Click += new System.EventHandler(this.btnMap_Click);
 			// 
 			// btnBill
 			// 

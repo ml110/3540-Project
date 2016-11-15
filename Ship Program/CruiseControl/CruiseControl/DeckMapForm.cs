@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using ShipMap;
+using CruiseControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ShipMap
+namespace CruiseControl
 {
-    public partial class Form1 : Form
+    public partial class DeckMapForm : Form
     {
         /// Whomever linking this forum to parent needs to make changes to pass the int 'tripID'
         /// tripID (initialized @ line 26, 35 and 40) is currently hardcoded to =1 for testing purposes
@@ -27,7 +27,8 @@ namespace ShipMap
         private List<Button> buttonList;
         private List<PASSENGER> passList;
         private int tripID; //////
-        public Form1()
+        
+		public DeckMapForm(int TN)
         {
             InitializeComponent();
             roomList = new List<ROOM>();
@@ -36,12 +37,12 @@ namespace ShipMap
             buttonList = new List<Button>();
             passList = new List<PASSENGER>();
             cmd = new MySqlCommand();
-            tripID = new int(); /////////////
+			tripID = TN; /////////////
         }
 
          private void Form1_Load(object sender, EventArgs e)
         {
-            tripID = 1; //////////// link trip to parent forum
+            //tripID = 1; //////////// link trip to parent forum
 
             this.AutoSize = true;
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;

@@ -107,6 +107,8 @@ namespace CruiseControl
             }
 
             sRead.Close();
+
+			CB.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
 		//METHOD SELECTING THE TRIP NUMBER
@@ -119,6 +121,7 @@ namespace CruiseControl
 
 			//enables the child-form controls
 			btnSchedule.Enabled = true;
+			btnMap.Enabled = true;
 
 			//triggers update on the right-side information
 			updateTripString();
@@ -231,6 +234,13 @@ namespace CruiseControl
 		{
 			ScheduleForm scheduler = new ScheduleForm(getTripNum(), connection, command);
 			scheduler.Visible = true;
+		}
+
+		//start the deck map form
+		private void btnMap_Click(object sender, EventArgs e)
+		{
+			DeckMapForm deckmap = new DeckMapForm(getTripNum());
+			deckmap.Visible = true;
 		}
 
     }

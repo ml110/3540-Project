@@ -98,6 +98,7 @@ namespace CruiseControl
 			}
 
 			sRead.Close();
+
 		}
 
 		//DAY
@@ -250,13 +251,22 @@ namespace CruiseControl
 
             Debug.WriteLine(shiftID + " " + staffID + " " + shiftDate);
 
-            command.CommandText = "INSERT INTO STAFF_SHIFT(shift_id, staff_id, shift_date) VALUES('" + shiftID + "', '" + staffID + "', '" + shiftDate + "')";
-            command.Connection = connection;
-            MySqlDataReader sRead = command.ExecuteReader();
-            sRead.Close();
+			try
+			{
+				command.CommandText = "INSERT INTO STAFF_SHIFT(shift_id, staff_id, shift_date) VALUES('" + shiftID + "', '" + staffID + "', '" + shiftDate + "')";
+				command.Connection = connection;
+				MySqlDataReader sRead = command.ExecuteReader();
+				sRead.Close();
 
-            string theDay = cbDay.Text.Trim();
-            updateDisplay(theDay);
+				string theDay = cbDay.Text.Trim();
+				updateDisplay(theDay);
+
+				controlReset();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException)
+			{
+				MessageBox.Show("SQL ERROR: Please check that the shift does not already exist.", "OOPS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}   		
 		}
 
         private void cbAddArea_SelectedIndexChanged(object sender, EventArgs e)
@@ -268,6 +278,26 @@ namespace CruiseControl
         {
             validateButton();
         }
+
+		//METHOD THAT RESETS THE INSERTION CONTROLS AFTER EACH RUN
+		private void controlReset()
+		{
+			cbAddDept.Text = null;
+			
+			cbAddArea.Items.Clear();
+			cbAddArea.Text = null;
+			cbAddArea.Enabled = false;
+
+			rbAfternoon.Checked = false;
+			rbMorning.Checked = false;
+			rbEvening.Checked = false;
+
+			cbName.Items.Clear();
+			cbName.Text = null;
+			cbName.Enabled = false;
+
+			btnInsert.Enabled = false;
+		}
 
 /////// End of insertion prep code ////////////////////////////////////////////////////////////////////
 
