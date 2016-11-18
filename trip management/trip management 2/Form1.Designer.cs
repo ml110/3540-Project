@@ -82,6 +82,7 @@
             this.btnAddBelow.TabIndex = 4;
             this.btnAddBelow.Text = "Add Day Below Selected";
             this.btnAddBelow.UseVisualStyleBackColor = true;
+            this.btnAddBelow.Click += new System.EventHandler(this.btnAddBelow_Click);
             // 
             // Form1
             // 

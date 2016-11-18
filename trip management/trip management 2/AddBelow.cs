@@ -11,27 +11,20 @@ using MySql.Data.MySqlClient;
 
 namespace trip_management_2
 {
-    public partial class Add : Form
+    public partial class AddBelow : Form
     {
+        private string day, trip;
         private MySqlConnection connection;
         MySqlCommand cmd;
-        string trip;
-        public Add(string tr)
+        public AddBelow(string t, string d)
         {
             InitializeComponent();
             cmd = new MySqlCommand();
-            trip = tr;
+            int temp;
+            temp = Convert.ToInt32(d) + 1;
+            day = temp.ToString();
+            trip = t;
             connect();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Add_Load(object sender, EventArgs e)
-        {
-            datePickerFormat();
             fillCmb();
         }
 
@@ -57,9 +50,9 @@ namespace trip_management_2
             string depart;
             string instruction = "";
             string portId = getPortId(port);
+            string lastday = getLastDay();
             int itinId = getLastItinId();
             itinId++;
-            int DayTxt = 0;// Convert.ToInt32(txtDay.Text);
 
             if (rbrTrue.Checked == true)
             {
@@ -92,28 +85,29 @@ namespace trip_management_2
                 depart = dateTimePicker3.Text;
             }
 
-
-            if (!Int32.TryParse(txtDay.Text, out DayTxt))
+            if(lastday == "error")
             {
-                MessageBox.Show("Invalid Day");
-            }
-            else if(portId == "error")
+                MessageBox.Show("Cannot get last day");
+            }else if (portId == "error")
             {
                 MessageBox.Show("Invalid Port");
             }
-            else if(statusId == "error")
+            else if (statusId == "error")
             {
                 MessageBox.Show("Invalid Status");
             }
             else
             {
+                
+                updateDays(Convert.ToInt32(lastday));
+
                 instruction = "INSERT INTO TRIP_ITINERARY(trip_id, day_id, trip_date, status_id, isReroute, isCancelled,itin_id) ";
                 instruction += "values ('" + trip + "','" + day + "','" + date + "','" + statusId + "','" + reroute + "','0','" + itinId + "')";
                 cmd.CommandText = instruction;
 
                 cmd.ExecuteNonQuery();
 
-                if(status != "Cruising")
+                if (status != "Cruising")
                 {
                     instruction = "INSERT INTO TRIP_PORTS (itin_id, port_id, arrival_time, depart_time) ";
                     instruction += "values ('" + itinId + "','" + portId + "','" + arrival + "','" + depart + "')";
@@ -123,9 +117,44 @@ namespace trip_management_2
                 }
 
                 MessageBox.Show("Day Added");
-                
             }
+        }
 
+        private void AddBelow_Load(object sender, EventArgs e)
+        {
+            datePickerFormat();
+            txtDay.Text = day;
+        }
+
+        private void updateDays(int lastDay)
+        {
+            string instruction = "";
+            /*for (int i = Convert.ToInt32(day); i < lastDay; i++)
+            {
+                int j = i + 1;
+
+                instruction = "UPDATE TRIP_ITINERARY ";
+                instruction += "SET day_id = '" + j.ToString() + "' ";
+
+                instruction += "WHERE trip_id = '" + trip + "' and isCancelled = '0' and day_id = '" + i.ToString() + "'";
+
+                cmd.CommandText = instruction;
+
+                cmd.ExecuteNonQuery();
+
+            }*/
+
+            for(int i = lastDay; i > Convert.ToInt32(day) - 1; i--)
+            {
+                instruction = "UPDATE TRIP_ITINERARY ";
+                instruction += "SET day_id = '" + (i+1).ToString() + "' ";
+
+                instruction += "WHERE trip_id = '" + trip + "' and isCancelled = '0' and day_id = '" + i.ToString() + "'";
+
+                cmd.CommandText = instruction;
+
+                cmd.ExecuteNonQuery();
+            }
 
         }
 
@@ -135,32 +164,19 @@ namespace trip_management_2
             string statusId = "";
             setupSqlCommand(query);
             MySqlDataReader dataReader = cmd.ExecuteReader();
-            if(dataReader.HasRows)
+            if (dataReader.HasRows)
             {
                 while (dataReader.Read())
                 {
                     statusId = dataReader["status_id"].ToString();
                 }
-            }else
+            }
+            else
             {
                 statusId = "error";
             }
             dataReader.Close();
             return statusId;
-        }
-
-        private int getLastItinId()
-        {
-            string query = "SELECT itin_id FROM TRIP_ITINERARY ORDER BY itin_id DESC LIMIT 1";
-            int itinId = 0;
-            setupSqlCommand(query);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-            while (dataReader.Read())
-            {
-                itinId = Convert.ToInt32(dataReader["itin_id"]);
-            }
-            dataReader.Close();
-            return itinId;
         }
 
         private string getPortId(string name)
@@ -169,18 +185,40 @@ namespace trip_management_2
             string portId = "";
             setupSqlCommand(query);
             MySqlDataReader dataReader = cmd.ExecuteReader();
-            if(dataReader.HasRows)
+            if (dataReader.HasRows)
             {
                 while (dataReader.Read())
                 {
                     portId = dataReader["port_id"].ToString();
                 }
-            }else
+            }
+            else
             {
                 portId = "error";
             }
             dataReader.Close();
             return portId;
+        }
+
+        private string getLastDay()
+        {
+            string query = "SELECT day_id FROM TRIP_ITINERARY where isCancelled = '0' and trip_id = '" + trip + "' order by day_id";
+            string lastDay = "";
+            setupSqlCommand(query);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                while (dataReader.Read())
+                {
+                    lastDay = dataReader["day_id"].ToString();
+                }
+            }
+            else
+            {
+                lastDay = "error";
+            }
+            dataReader.Close();
+            return lastDay;
         }
 
         private void connect()
@@ -276,6 +314,20 @@ namespace trip_management_2
                 dateTimePicker3.Enabled = true;
                 cmbPort.Enabled = true;
             }
+        }
+
+        private int getLastItinId()
+        {
+            string query = "SELECT itin_id FROM TRIP_ITINERARY ORDER BY itin_id DESC LIMIT 1";
+            int itinId = 0;
+            setupSqlCommand(query);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                itinId = Convert.ToInt32(dataReader["itin_id"]);
+            }
+            dataReader.Close();
+            return itinId;
         }
     }
 }

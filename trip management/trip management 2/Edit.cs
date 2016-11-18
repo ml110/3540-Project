@@ -180,6 +180,8 @@ namespace trip_management_2
 
                         cmd.ExecuteNonQuery();
 
+                        MessageBox.Show("Day Edited");
+
                     }
                 }
             }

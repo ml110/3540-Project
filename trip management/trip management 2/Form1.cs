@@ -83,7 +83,7 @@ namespace trip_management_2
 
         private void showDays()
         {
-            string query = "SELECT * FROM TRIP_ITINERARY where trip_id =\"" + selected + "\"";
+            string query = "SELECT * FROM TRIP_ITINERARY where trip_id =\"" + selected + "\" and isCancelled = '0' order by day_id";
             DataSet ds = new DataSet();
             MySqlDataAdapter mcmd = new MySqlDataAdapter(query, connection);
             mcmd.Fill(ds, "days");
@@ -126,6 +126,26 @@ namespace trip_management_2
             else
             {
                 MessageBox.Show("Select a Day");
+            }
+        }
+
+        private void btnAddBelow_Click(object sender, EventArgs e)
+        {
+            int rowindex = dgv1.CurrentCell.RowIndex;
+            Int32 selectedCellCount = dgv1.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                string tripId = dgv1.Rows[rowindex].Cells[0].Value.ToString();
+                string day = dgv1.Rows[rowindex].Cells[1].Value.ToString();
+
+
+
+                AddBelow newForm = new AddBelow(tripId, day);
+                newForm.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Make a Selection");
             }
         }
     }
