@@ -118,7 +118,9 @@ namespace CruiseControl
 		//THIS METHOD UPDATES THE DISPLAY
 		private void updateDisplay(string day)
 		{
-			DataSet ds = new DataSet();
+            //MessageBox.Show("DEPT: " + cbDept.Text); //TESTCODE
+            
+            DataSet ds = new DataSet();
 			dgvSched.DataSource = null;
 			MySqlDataAdapter MDA;
 			
@@ -179,7 +181,14 @@ namespace CruiseControl
 				rbAfternoon.Enabled = true;
 				rbEvening.Enabled = true;
 				rbMorning.Enabled = true;
+
+                //changing the index in this CB should also update the display to the currently selected department
+                cbDept.Text = cbAddDept.Text;
+                string theDay = cbDay.Text.Trim();
+                updateDisplay(theDay);
 			}
+
+            
 
             validateButton();
 		}
@@ -258,6 +267,7 @@ namespace CruiseControl
 				MySqlDataReader sRead = command.ExecuteReader();
 				sRead.Close();
 
+                //update the display
 				string theDay = cbDay.Text.Trim();
 				updateDisplay(theDay);
 
@@ -282,7 +292,7 @@ namespace CruiseControl
 		//METHOD THAT RESETS THE INSERTION CONTROLS AFTER EACH RUN
 		private void controlReset()
 		{
-			cbAddDept.Text = null;
+			//cbAddDept.Text = null;
 			
 			cbAddArea.Items.Clear();
 			cbAddArea.Text = null;
@@ -339,6 +349,8 @@ namespace CruiseControl
 
             string theDay = cbDay.Text.Trim();
             updateDisplay(theDay);
+
+            btnCancel.Enabled = false;
         }
 
         private void validateDelete()
