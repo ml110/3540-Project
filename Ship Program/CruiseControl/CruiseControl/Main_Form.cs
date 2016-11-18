@@ -122,6 +122,7 @@ namespace CruiseControl
 			//enables the child-form controls
 			btnSchedule.Enabled = true;
 			btnMap.Enabled = true;
+            btnDinner.Enabled = true;
 
 			//triggers update on the right-side information
 			updateTripString();
@@ -242,6 +243,12 @@ namespace CruiseControl
 			DeckMapForm deckmap = new DeckMapForm(getTripNum());
 			deckmap.Visible = true;
 		}
+
+        private void btnDinner_Click(object sender, EventArgs e)
+        {
+            DinnerForm foodstuff = new DinnerForm(getTripNum());
+            foodstuff.Visible = true;
+        }
 
     }
 }

@@ -54,11 +54,24 @@
     <Compile Include="DeckMapForm.designer.cs">
       <DependentUpon>DeckMapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DINNER.cs" />
     <Compile Include="FormPassenger.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPassenger.designer.cs">
       <DependentUpon>FormPassenger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DinnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DinnerForm.Designer.cs">
+      <DependentUpon>DinnerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DinnerTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DinnerTableForm.Designer.cs">
+      <DependentUpon>DinnerTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
@@ -77,12 +90,20 @@
     <Compile Include="ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="STAFF.cs" />
+    <Compile Include="TABLE.cs" />
     <Compile Include="TRIP.cs" />
     <EmbeddedResource Include="DeckMapForm.resx">
       <DependentUpon>DeckMapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPassenger.resx">
       <DependentUpon>FormPassenger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DinnerForm.resx">
+      <DependentUpon>DinnerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DinnerTableForm.resx">
+      <DependentUpon>DinnerTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>

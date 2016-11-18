@@ -22,3 +22,7 @@ D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project
 C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.ScheduleForm.resources
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.FormPassenger.resources
 D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.DeckMapForm.resources
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.DeckMapForm.resources
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.FormPassenger.resources
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.DinnerForm.resources
+C:\Users\Matt\Documents\College Course Work\Github\CSIS 3540 Project\Ship Program\CruiseControl\CruiseControl\obj\Debug\CruiseControl.DinnerTableForm.resources
