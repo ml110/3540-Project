@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddBelow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBelow.Designer.cs">
+      <DependentUpon>AddBelow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cruncher.cs" />
     <Compile Include="DeckMapForm.cs">
       <SubType>Form</SubType>
@@ -55,6 +67,12 @@
       <DependentUpon>DeckMapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DINNER.cs" />
+    <Compile Include="Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPassenger.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,8 +111,23 @@
     <Compile Include="STAFF.cs" />
     <Compile Include="TABLE.cs" />
     <Compile Include="TRIP.cs" />
+    <Compile Include="TripManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TripManagment.Designer.cs">
+      <DependentUpon>TripManagment.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddBelow.resx">
+      <DependentUpon>AddBelow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeckMapForm.resx">
       <DependentUpon>DeckMapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPassenger.resx">
       <DependentUpon>FormPassenger.cs</DependentUpon>
@@ -119,6 +152,9 @@
     </Compile>
     <EmbeddedResource Include="ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TripManagment.resx">
+      <DependentUpon>TripManagment.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

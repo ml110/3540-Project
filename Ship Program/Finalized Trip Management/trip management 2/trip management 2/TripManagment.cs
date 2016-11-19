@@ -11,12 +11,12 @@ using MySql.Data.MySqlClient;
 
 namespace trip_management_2
 {
-    public partial class Form1 : Form
+    public partial class TripManagment : Form
     {
         private MySqlConnection connection;
         MySqlCommand cmd;
         private string selected = "1";
-        public Form1()
+        public TripManagment()
         {
             InitializeComponent();
             cmd = new MySqlCommand();
@@ -31,7 +31,6 @@ namespace trip_management_2
 
             string connectionString;
 
-            //connectionString = "SERVER=ec2-52-20-54-9.compute-1.amazonaws.com;DATABASE=sampdb;UID=f2016_s1_user24;PASSWORD=f2016_s1_user24;";
             connectionString = "SERVER=" + server + ";DATABASE=" +
             database + ";" + "UID=" + user + ";" + "PASSWORD=" + pass + ";";
             connection = new MySqlConnection(connectionString);
@@ -83,7 +82,8 @@ namespace trip_management_2
 
         private void showDays()
         {
-            string query = "SELECT * FROM TRIP_ITINERARY where trip_id =\"" + selected + "\" and isCancelled = '0' order by day_id";
+            //shows all days in the trip
+            string query = "SELECT * FROM TRIP_ITINERARY where trip_id =\"" + selected + "\" order by day_id";
             DataSet ds = new DataSet();
             MySqlDataAdapter mcmd = new MySqlDataAdapter(query, connection);
             mcmd.Fill(ds, "days");
@@ -97,13 +97,14 @@ namespace trip_management_2
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            //opens add form
             Add newForm = new Add("1");
             newForm.Visible = true;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            //checks if there is a selected cell in the datagridview, and opens the Edit form if there is
             int rowindex = dgv1.CurrentCell.RowIndex;
             Int32 selectedCellCount =
             dgv1.GetCellCount(DataGridViewElementStates.Selected);
@@ -131,6 +132,7 @@ namespace trip_management_2
 
         private void btnAddBelow_Click(object sender, EventArgs e)
         {
+            //if a datagridview cell is selected then open the AddBelow form
             int rowindex = dgv1.CurrentCell.RowIndex;
             Int32 selectedCellCount = dgv1.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)

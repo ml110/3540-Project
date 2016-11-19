@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace trip_management_2
+namespace CruiseControl
 {
     public partial class Edit : Form
     {
@@ -19,6 +19,7 @@ namespace trip_management_2
 
         private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //disallow input for certain statuses
             string selected = cmbStatus.Text;
             if (selected == "Cruising")
             {
@@ -48,6 +49,7 @@ namespace trip_management_2
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            //updates row in database
             int DayTxt;
             string statusName = cmbStatus.Text;
             string status = getStatusId(cmbStatus.Text);
@@ -73,6 +75,8 @@ namespace trip_management_2
                 cancel = "1";
             }
             bool checkDay = checkForDay();
+
+            //input validation
             if (!Int32.TryParse(txtDay.Text, out DayTxt) && checkDay == false)
             {
                 MessageBox.Show("Invalid Day");
@@ -110,20 +114,11 @@ namespace trip_management_2
                     depart = dateTimePicker3.Text;
                 }
 
-
-                //instruction = "UPDATE TRIP_ITINERARY ";
-                //instruction += "SET trip_id = '" + tripId + "', day_id = '" + day + "', trip_date = '" + date + "', status_id = '" + statusId + "', isReroute = '" + reroute + "', isCancelled = '" + cancel + ", itin_id = '" + itin_id + "' ";
-                //instruction += "WHERE trip_id = '" + tripId + "' and day_id = '" + day + "'";
-
-                //MessageBox.Show("trip id: " + tripId + "      day_id: "+ day  +"    trip_date: " + date + "      status: " + statusId + "     reroute: " + reroute + "       cancel: " + cancel);
+                //updates the row in trip_itinerary
                 instruction = "UPDATE TRIP_ITINERARY ";
                 instruction += "SET trip_id = '"+tripId+"', trip_date = '"+date+"', status_id = '"+statusId+"', isReroute = '"+reroute+"', isCancelled = '"+cancel+"', itin_id = '"+itin_id+"' ";
                 instruction += "WHERE trip_id ='"+tripId+"' and day_id = '"+day+"'";
-                /*
-                 UPDATE TRIP_ITINERARY
-                 SET trip_id = '1', day_id = '1', trip_date = '2016-10-30', status_id = '3', isReroute = '0', isCancelled = '0', itin_id = '1'
-                 where trip_id = 1 and day_id = 1
-                */
+
                 cmd.CommandText = instruction;
 
                 cmd.ExecuteNonQuery();
@@ -136,7 +131,6 @@ namespace trip_management_2
                         //edit row in itin ports
                         instruction = "UPDATE TRIP_PORTS ";
 
-                        //instruction += "set itin_id = '"+itin_id+ "', port_id = '"+port+"', arrival_time = '"+arrival+"', depart_time = '"+depart+"' ";
 
                         if(status == "2")
                         {
@@ -159,7 +153,6 @@ namespace trip_management_2
                     else
                     {
                         //add new row to itin_ports
-                        
                         if (status == "2")
                         {
                             instruction = "INSERT INTO TRIP_PORTS (itin_id, port_id, arrival_time, depart_time) ";
@@ -175,20 +168,22 @@ namespace trip_management_2
                             instruction = "INSERT INTO TRIP_PORTS (itin_id, port_id, arrival_time) ";
                             instruction += "values ('" + itin_id + "','" + port + "','" + arrival + "')";
                         }
-                        //instruction += "values ('" + itin_id + "','" + port + "','" + arrival + "','" + depart + "')";
+                        
                         cmd.CommandText = instruction;
 
                         cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Day Edited");
 
                     }
                 }
+
+                MessageBox.Show("Day Edited");
             }
         }
 
         private bool checkForDay()
         {
+            //checks if a day exists in the trip
             string query = "SELECT * from TRIP_ITINERARY where day_id = '" + day + "' And trip_id = '" + tripId + "'";
             bool output = false;
             setupSqlCommand(query);
@@ -225,6 +220,7 @@ namespace trip_management_2
 
         private void datePickerFormat()
         {
+            //changes the format for datatimepickers
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
@@ -260,6 +256,7 @@ namespace trip_management_2
 
         private string getStatusId(string status)
         {
+            //gets status_id from status_name
             string query = "SELECT status_id FROM STATUS where status_name = '" + status + "'";
             string statusId = "";
             setupSqlCommand(query);
@@ -281,6 +278,7 @@ namespace trip_management_2
 
         private string getPortId(string name)
         {
+            //gets port_id from port_name
             string query = "SELECT port_id FROM PORTS where port_name = '" + name + "'";
             string portId = "";
             setupSqlCommand(query);
@@ -302,6 +300,7 @@ namespace trip_management_2
 
         private void setRadioButtons()
         {
+            //sets radiobuttons to false/true depending on info in database
             if (isReroute == "False")
             {
                 rbrFalse.Checked = true;
@@ -322,7 +321,8 @@ namespace trip_management_2
 
         private void getStatus()
         {
-            //connect();
+            //gets the status_name from status_id
+            //changes the cmb text to the status name
             string query = "SELECT status_name FROM STATUS where status_id = \"" + statusId + "\"";
             setupSqlCommand(query);
             MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -384,7 +384,7 @@ namespace trip_management_2
 
         private void fillCmb()
         {
-            //connect();
+            //fills the port and status comboboxes with their data
             string query1 = "Select status_name from STATUS";
             string query2 = "Select port_name from PORTS";
             DataSet status = new DataSet();
@@ -403,14 +403,14 @@ namespace trip_management_2
 
         private void getPortsInfo()
         {
-            //connect();
+            //gets the port information from trip_ports
+            //puts data into the inputs in gui
             string query = "SELECT * from TRIP_PORTS where itin_id = \"" + itin_id + "\"";
             setupSqlCommand(query);
             MySqlDataReader test = cmd.ExecuteReader();
             string port = "";
             while (test.Read())
             {
-                //txtArrival.Text = test["arrival_time"].ToString();
                 string arrival = test["arrival_time"].ToString();
                 string depart = test["depart_time"].ToString();
                 if (arrival == null)
@@ -430,9 +430,6 @@ namespace trip_management_2
                 {
                     dateTimePicker3.Text = test["depart_time"].ToString();
                 }
-                //dateTimePicker2.Text = test["arrival_time"].ToString();
-                //txtDeparture.Text = test["depart_time"].ToString();
-                //dateTimePicker3.Text = test["depart_time"].ToString();
                 port = test["port_id"].ToString();
             }
             test.Close();

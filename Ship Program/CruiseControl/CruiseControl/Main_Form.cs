@@ -123,6 +123,7 @@ namespace CruiseControl
 			btnSchedule.Enabled = true;
 			btnMap.Enabled = true;
             btnDinner.Enabled = true;
+            btnTripPlan.Enabled = true;
 
 			//triggers update on the right-side information
 			updateTripString();
@@ -248,6 +249,12 @@ namespace CruiseControl
         {
             DinnerForm foodstuff = new DinnerForm(getTripNum());
             foodstuff.Visible = true;
+        }
+
+        private void btnTripPlan_Click(object sender, EventArgs e)
+        {
+            TripManagment thePlan = new TripManagment(getTripNum());
+            thePlan.Visible = true;
         }
 
     }

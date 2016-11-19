@@ -143,6 +143,7 @@
             this.btnTripPlan.TabIndex = 9;
             this.btnTripPlan.Text = "Itinerary Control";
             this.btnTripPlan.UseVisualStyleBackColor = true;
+            this.btnTripPlan.Click += new System.EventHandler(this.btnTripPlan_Click);
             // 
             // btnMap
             // 

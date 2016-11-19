@@ -1,6 +1,6 @@
 ﻿namespace trip_management_2
 {
-    partial class Form1
+    partial class TripManagment
     {
         /// <summary>
         /// Required designer variable.
@@ -41,14 +41,14 @@
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Location = new System.Drawing.Point(13, 13);
             this.dgv1.Name = "dgv1";
-            this.dgv1.Size = new System.Drawing.Size(368, 221);
+            this.dgv1.Size = new System.Drawing.Size(508, 221);
             this.dgv1.TabIndex = 0;
             // 
             // btnRefresh
             // 
             this.btnRefresh.Location = new System.Drawing.Point(12, 240);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(368, 53);
+            this.btnRefresh.Size = new System.Drawing.Size(509, 53);
             this.btnRefresh.TabIndex = 1;
             this.btnRefresh.Text = "Reload Days";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@
             // 
             this.btnEdit.Location = new System.Drawing.Point(12, 299);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(368, 51);
+            this.btnEdit.Size = new System.Drawing.Size(509, 51);
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit Day";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             // 
             this.btnAdd.Location = new System.Drawing.Point(12, 356);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(368, 51);
+            this.btnAdd.Size = new System.Drawing.Size(509, 51);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Add New Day";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             // 
             this.btnAddBelow.Location = new System.Drawing.Point(13, 413);
             this.btnAddBelow.Name = "btnAddBelow";
-            this.btnAddBelow.Size = new System.Drawing.Size(368, 51);
+            this.btnAddBelow.Size = new System.Drawing.Size(508, 51);
             this.btnAddBelow.TabIndex = 4;
             this.btnAddBelow.Text = "Add Day Below Selected";
             this.btnAddBelow.UseVisualStyleBackColor = true;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 474);
+            this.ClientSize = new System.Drawing.Size(533, 474);
             this.Controls.Add(this.btnAddBelow);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEdit);
