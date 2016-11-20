@@ -1,0 +1,20 @@
+C:\Users\Manupreet Kaur\Desktop\client server\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.exe.config
+E:\client server\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.exe.config
+E:\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.csprojResolveAssemblyReference.cache
+E:\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.Form1.resources
+E:\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.Properties.Resources.resources
+E:\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.csproj.GenerateResource.Cache
+E:\client server\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.exe
+E:\client server\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.pdb
+E:\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.exe
+E:\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.pdb
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.exe.config
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.exe
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.pdb
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\bin\Debug\MySql.Data.dll
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.csprojResolveAssemblyReference.cache
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.Form1.resources
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.Properties.Resources.resources
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.csproj.GenerateResource.Cache
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.exe
+C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.pdb
