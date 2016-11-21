@@ -1,21 +1,17 @@
-Bill Holder Name : Betty Lewis
+Bill Holder Name : Christine Stanley
 
 
 
 SaleID    Name                     Price     Date        Time        
 
 
-84        Indestructable Bucket    $3.45     2016-11-02  11:17:00    
+126       Captain Morgan           $9.97     2016-11-03  04:29:00    
 
-94        nVidia GeForce GTX 980Ti $34.64    2016-11-04  11:53:00    
-
-84        Indestructable Bucket    $3.45     2016-11-02  11:17:00    
-
-94        nVidia GeForce GTX 980Ti $34.64    2016-11-04  11:53:00    
+133       Pabst Blue Ribbon        $37.80    2016-11-01  02:02:00    
 
 ===================
 
-Your Total Bill is : $76.18
+Your Total Bill is : $47.77
 
 
 

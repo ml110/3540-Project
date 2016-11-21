@@ -51,7 +51,7 @@ namespace bill
             dList = new List<DRINK>();
             pList = new List<Customer>();
 
-            DBConnect();
+            DBConnect(); //TEMP THING
         }
 
         //TEMP CONNECTION METHOD
@@ -77,7 +77,7 @@ namespace bill
 
         private void calcBill_Click(object sender, EventArgs e)
         {
-            string query1 = "select isBillHolder from ROOM_PASSENGER where roomPass_id = " + rumID.Text;
+            string query1 = "SELECT isBillHolder FROM ROOM_PASSENGER WHERE roomPass_id = " + rumID.Text;
             string query = "select gt.gift_id, gt.giftSale_id, g.gift_name, g.gift_price, gt.sale_time, gt.sale_date, gt.shop_id from GIFT_TRANSACTION as gt INNER JOIN GIFTS as  g on gt.gift_id = g.gift_id  where gt.roomPass_id = " + rumID.Text;
             string query2 = " select bt.drink_id, bt.barSale_id, d.drink_name, d.drink_price, bt.sale_time, bt.sale_date, bt.bar_id from  BAR_TRANSACTION as bt   INNER JOIN DRINKS as  d on d.drink_id = bt.drink_id  where bt.roomPass_id = " + rumID.Text;
             bool value = true;
@@ -95,6 +95,7 @@ namespace bill
                     rp = new Customer();
                     // MessageBox.Show(dataReader["isBillHolder"].ToString());
                     rp.isBillHolder = (dataReader["isBillHolder"].ToString() == "True");
+					MessageBox.Show(rp.isBillHolder.ToString());
                     pList.Add(rp);
                 }
 
@@ -103,7 +104,7 @@ namespace bill
 
                 if (rp.isBillHolder == value)
                 {
-                    string filename = "Bill.txt";
+                    string filename = "Bill - " + rp.pass_fname + " " + rp.pass_lname + ".txt";
                     label5.Text = null;
 
                     using (StreamWriter file = new StreamWriter(filename))
@@ -215,12 +216,59 @@ namespace bill
             {
                 MessageBox.Show("Try to connect");
             }
-}
+		}
+
+		//this will give the bill holder's name for the reciept given the roomnumber
+		private string getBHname(int RN)
+		{
+			string name = "";
+			string QUERY = "SELECT R.room_number, concat(P.pass_firstname, \" \", P.pass_lastname) AS billHolder FROM ROOM_PASSENGER AS RP";
+			QUERY += " INNER JOIN PASSENGER AS P ON RP.pass_id = P.pass_id";
+			QUERY += " INNER JOIN ROOM AS R ON RP.room_id = R.room_id";
+			QUERY += " WHERE RP.trip_id = 1 AND RP.isBillHolder = 1 AND R.room_number = '" + RN + "';";
+
+			cmd.Connection = connection;
+			cmd.CommandText = QUERY;
+			MySqlDataReader MDR = cmd.ExecuteReader();
+
+			while (MDR.Read())
+			{
+				name = MDR["billHolder"].ToString();
+			}
+			MDR.Close();
+
+			if (name == null || name == "")
+			{
+				throw new ArgumentException("No passengers in the selected room!");
+			}
+			else
+			{
+				return name;
+			}
+		}
+
+		//This should calculate all the expenses
+		private void btnCalc_Click(object sender, EventArgs e)
+		{
+			string billName = "";
+
+			try
+			{
+				billName = getBHname(Int32.Parse(rumID.Text.Trim()));
+				MessageBox.Show(billName);
+			}
+			catch (ArgumentException ex)
+			{
+				MessageBox.Show(ex.Message, "OOPS", MessageBoxButtons.OK);
+			}
+		}
 
         //This needs to generate the Bill
         private void printBill_Click(object sender, EventArgs e)
         {
                 
         }
+
+		
     }
 }

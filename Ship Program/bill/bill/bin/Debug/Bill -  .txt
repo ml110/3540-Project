@@ -1,0 +1,18 @@
+Bill Holder Name : Dorothy Warren
+
+
+
+SaleID    Name                     Price     Date        Time        
+
+
+19        Shirt                    $24.74    2016-10-30  10:47:00    
+
+79        Jameson                  $28.39    2016-10-30  06:16:00    
+
+===================
+
+Your Total Bill is : $53.13
+
+
+
+THANKS
