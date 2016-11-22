@@ -1,17 +1,21 @@
-Bill Holder Name : Dorothy Warren
+Bill Holder Name : Betty Lewis
 
 
 
 SaleID    Name                     Price     Date        Time        
 
 
-19        Shirt                    $24.74    2016-10-30  10:47:00    
+84        Indestructable Bucket    $3.45     2016-11-02  11:17:00    
 
-79        Jameson                  $28.39    2016-10-30  06:16:00    
+94        nVidia GeForce GTX 980Ti $34.64    2016-11-04  11:53:00    
+
+84        Indestructable Bucket    $3.45     2016-11-02  11:17:00    
+
+94        nVidia GeForce GTX 980Ti $34.64    2016-11-04  11:53:00    
 
 ===================
 
-Your Total Bill is : $53.13
+Your Total Bill is : $76.18
 
 
 
