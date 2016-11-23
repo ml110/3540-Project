@@ -22,7 +22,7 @@ namespace bill
         List<TRANSACTION> listTran;
 
         int tID; //TRIP
-        int sID; //SHIP
+		int rNum; //curently loaded in roomnumber
 
         public BillingForm() //TEMP CONSTRUCTOR
         {
@@ -80,6 +80,7 @@ namespace bill
 
 			if (name == null || name == "")
 			{
+				rumID.Text = "";
 				throw new ArgumentException("No passengers in the selected room!");
 			}
 			else
@@ -179,7 +180,11 @@ namespace bill
 				totalPrice += LT.ElementAt(i).price;
 			}
 			txtReceipt.Text += "===============================================================================================================\r\n";
-			txtReceipt.Text += String.Format("{0,-35} {1,8:C2}", "TOTAL", totalPrice);
+			txtReceipt.Text += String.Format("{0,-35} {1,8:C2}", "TOTAL", totalPrice) + "\r\n";
+			txtReceipt.Text += "===============================================================================================================\r\n" + "\r\n";
+
+			txtReceipt.Text += "THANK YOU FOR SAILING WITH STEVE'S CRUISE LINE" + "\r\n";
+			txtReceipt.Text += "WE HOPE TO SEE YOU AGAIN SOON!";
 		}
 
 		//This should calculate all the expenses
@@ -189,9 +194,9 @@ namespace bill
 
 			try
 			{
-				int room = Int32.Parse(rumID.Text.Trim());
-				billName = getBHname(room);
-				listTran = generateTrans(room);
+				rNum = Int32.Parse(rumID.Text.Trim());
+				billName = getBHname(rNum);
+				listTran = generateTrans(rNum);
 
 				showReceipt(billName, listTran);
 			}
@@ -208,7 +213,15 @@ namespace bill
         //This needs to generate the Bill
         private void printBill_Click(object sender, EventArgs e)
         {
-                
+			StreamWriter myFile = new StreamWriter("../../../SAVED BILLS/ROOM " + rNum.ToString() + " BILL.txt");
+
+			for (int i = 0; i < txtReceipt.Lines.Length; i++)
+			{
+				myFile.WriteLine(txtReceipt.Lines[i]);
+			}
+
+			myFile.Close();
+			MessageBox.Show("Bill saved!", "SUCCESS");
         }
 
 		

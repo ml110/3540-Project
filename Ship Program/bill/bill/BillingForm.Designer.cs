@@ -37,7 +37,7 @@
 			// 
 			// printBill
 			// 
-			this.printBill.Location = new System.Drawing.Point(248, 232);
+			this.printBill.Location = new System.Drawing.Point(246, 333);
 			this.printBill.Name = "printBill";
 			this.printBill.Size = new System.Drawing.Size(114, 36);
 			this.printBill.TabIndex = 6;
@@ -48,7 +48,7 @@
 			// room_id
 			// 
 			this.room_id.AutoSize = true;
-			this.room_id.Location = new System.Drawing.Point(8, 232);
+			this.room_id.Location = new System.Drawing.Point(6, 333);
 			this.room_id.Name = "room_id";
 			this.room_id.Size = new System.Drawing.Size(75, 13);
 			this.room_id.TabIndex = 11;
@@ -56,14 +56,14 @@
 			// 
 			// rumID
 			// 
-			this.rumID.Location = new System.Drawing.Point(8, 248);
+			this.rumID.Location = new System.Drawing.Point(6, 349);
 			this.rumID.Name = "rumID";
 			this.rumID.Size = new System.Drawing.Size(114, 20);
 			this.rumID.TabIndex = 14;
 			// 
 			// btnCalc
 			// 
-			this.btnCalc.Location = new System.Drawing.Point(128, 232);
+			this.btnCalc.Location = new System.Drawing.Point(126, 333);
 			this.btnCalc.Name = "btnCalc";
 			this.btnCalc.Size = new System.Drawing.Size(114, 36);
 			this.btnCalc.TabIndex = 23;
@@ -79,14 +79,14 @@
 			this.txtReceipt.Multiline = true;
 			this.txtReceipt.Name = "txtReceipt";
 			this.txtReceipt.ReadOnly = true;
-			this.txtReceipt.Size = new System.Drawing.Size(792, 214);
+			this.txtReceipt.Size = new System.Drawing.Size(792, 319);
 			this.txtReceipt.TabIndex = 24;
 			// 
 			// BillingForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(804, 274);
+			this.ClientSize = new System.Drawing.Size(804, 372);
 			this.Controls.Add(this.txtReceipt);
 			this.Controls.Add(this.btnCalc);
 			this.Controls.Add(this.rumID);
