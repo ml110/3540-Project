@@ -49,9 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="barTrans.cs" />
-    <Compile Include="drink.cs" />
-    <Compile Include="drinkInv.cs" />
     <Compile Include="DrinkForm.cs">
       <SubType>Form</SubType>
     </Compile>

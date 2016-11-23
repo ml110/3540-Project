@@ -18,3 +18,6 @@ C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\G
 C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.csproj.GenerateResource.Cache
 C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.exe
 C:\Users\300253245\Desktop\client server\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.pdb
+D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\Gifts_Control\Gifts_Control\bin\Debug\Gifts_Control.exe.config
+D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.exe
+D:\Users\Matt\Documents\School Work\College Course Work\Github\CSIS 3540 Project\Ship Program\Gifts_Control\Gifts_Control\obj\Debug\Gifts_Control.pdb

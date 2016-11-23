@@ -28,119 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Add = new System.Windows.Forms.Button();
-            this.num = new System.Windows.Forms.TextBox();
-            this.minus = new System.Windows.Forms.Button();
-            this.roomId = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Drinks = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(529, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Inventry Control ";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(523, 370);
-            this.dataGridView1.TabIndex = 12;
-            // 
-            // Add
-            // 
-            this.Add.Location = new System.Drawing.Point(532, 51);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(75, 23);
-            this.Add.TabIndex = 13;
-            this.Add.Text = "Increase";
-            this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // num
-            // 
-            this.num.Location = new System.Drawing.Point(532, 25);
-            this.num.Name = "num";
-            this.num.Size = new System.Drawing.Size(156, 20);
-            this.num.TabIndex = 14;
-            // 
-            // minus
-            // 
-            this.minus.Location = new System.Drawing.Point(613, 51);
-            this.minus.Name = "minus";
-            this.minus.Size = new System.Drawing.Size(75, 23);
-            this.minus.TabIndex = 15;
-            this.minus.Text = "Decrease";
-            this.minus.UseVisualStyleBackColor = true;
-            this.minus.Click += new System.EventHandler(this.minus_Click);
-            // 
-            // roomId
-            // 
-            this.roomId.Location = new System.Drawing.Point(532, 177);
-            this.roomId.Name = "roomId";
-            this.roomId.Size = new System.Drawing.Size(110, 20);
-            this.roomId.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(529, 161);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Enter the roomPass ID";
-            // 
-            // Drinks
-            // 
-            this.Drinks.Location = new System.Drawing.Point(532, 203);
-            this.Drinks.Name = "Drinks";
-            this.Drinks.Size = new System.Drawing.Size(75, 23);
-            this.Drinks.TabIndex = 18;
-            this.Drinks.Text = "filter Drinks";
-            this.Drinks.UseVisualStyleBackColor = true;
-            this.Drinks.Click += new System.EventHandler(this.Drinks_Click);
-            // 
-            // DrinkForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 388);
-            this.Controls.Add(this.Drinks);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.roomId);
-            this.Controls.Add(this.minus);
-            this.Controls.Add(this.num);
-            this.Controls.Add(this.Add);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label5);
-            this.Name = "DrinkForm";
-            this.Text = "CRUISE CONTROL: Bar Inventory Control";
-            this.Load += new System.EventHandler(this.DrinkForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.label5 = new System.Windows.Forms.Label();
+			this.dgvDisplay = new System.Windows.Forms.DataGridView();
+			this.Add = new System.Windows.Forms.Button();
+			this.num = new System.Windows.Forms.TextBox();
+			this.minus = new System.Windows.Forms.Button();
+			this.btnLog = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(365, 6);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(84, 13);
+			this.label5.TabIndex = 5;
+			this.label5.Text = "Inventry Control ";
+			// 
+			// dgvDisplay
+			// 
+			this.dgvDisplay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+			this.dgvDisplay.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.dgvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvDisplay.Location = new System.Drawing.Point(0, 3);
+			this.dgvDisplay.Name = "dgvDisplay";
+			this.dgvDisplay.Size = new System.Drawing.Size(359, 460);
+			this.dgvDisplay.TabIndex = 12;
+			// 
+			// Add
+			// 
+			this.Add.Location = new System.Drawing.Point(365, 48);
+			this.Add.Name = "Add";
+			this.Add.Size = new System.Drawing.Size(75, 23);
+			this.Add.TabIndex = 13;
+			this.Add.Text = "Increase";
+			this.Add.UseVisualStyleBackColor = true;
+			this.Add.Click += new System.EventHandler(this.Add_Click);
+			// 
+			// num
+			// 
+			this.num.Location = new System.Drawing.Point(365, 22);
+			this.num.Name = "num";
+			this.num.Size = new System.Drawing.Size(156, 20);
+			this.num.TabIndex = 14;
+			// 
+			// minus
+			// 
+			this.minus.Location = new System.Drawing.Point(446, 48);
+			this.minus.Name = "minus";
+			this.minus.Size = new System.Drawing.Size(75, 23);
+			this.minus.TabIndex = 15;
+			this.minus.Text = "Decrease";
+			this.minus.UseVisualStyleBackColor = true;
+			this.minus.Click += new System.EventHandler(this.minus_Click);
+			// 
+			// btnLog
+			// 
+			this.btnLog.Location = new System.Drawing.Point(365, 77);
+			this.btnLog.Name = "btnLog";
+			this.btnLog.Size = new System.Drawing.Size(156, 41);
+			this.btnLog.TabIndex = 19;
+			this.btnLog.Text = "Show Transaction History";
+			this.btnLog.UseVisualStyleBackColor = true;
+			// 
+			// DrinkForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(526, 467);
+			this.Controls.Add(this.btnLog);
+			this.Controls.Add(this.minus);
+			this.Controls.Add(this.num);
+			this.Controls.Add(this.Add);
+			this.Controls.Add(this.dgvDisplay);
+			this.Controls.Add(this.label5);
+			this.Name = "DrinkForm";
+			this.Text = "CRUISE CONTROL: Bar Inventory Control";
+			this.Load += new System.EventHandler(this.DrinkForm_Load);
+			((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDisplay;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.TextBox num;
-        private System.Windows.Forms.Button minus;
-        private System.Windows.Forms.TextBox roomId;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button Drinks;
+		private System.Windows.Forms.Button minus;
+		private System.Windows.Forms.Button btnLog;
     }
 }
 
