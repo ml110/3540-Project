@@ -17,7 +17,10 @@ namespace bill
         public string areaName { get; set; }
         public string staffName { get; set; }
 
-        public string ToString()
+		//heh
+		public int roomNum { get; set; }
+
+        public string printLine()
         {
             string transactionString = "";
 
