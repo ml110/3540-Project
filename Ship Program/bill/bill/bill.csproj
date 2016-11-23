@@ -48,17 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DRINK.cs" />
     <Compile Include="BillingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BillingForm.Designer.cs">
       <DependentUpon>BillingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GIFT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Customer.cs" />
+    <Compile Include="TRANSACTION.cs" />
     <EmbeddedResource Include="BillingForm.resx">
       <DependentUpon>BillingForm.cs</DependentUpon>
     </EmbeddedResource>

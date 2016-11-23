@@ -18,19 +18,13 @@ namespace bill
         // Remember: add Reference MySQL.Data
         private MySqlConnection connection;
         MySqlCommand cmd;
-        
-        private List<GIFT> gList;
-        private List<DRINK> dList;
-        private List<Customer> pList;
-        
-        GIFT g;
-        DRINK d;
-        Customer rp;
+
+        List<TRANSACTION> listTran;
 
         int tID; //TRIP
         int sID; //SHIP
 
-        public BillingForm()
+        public BillingForm() //TEMP CONSTRUCTOR
         {
             InitializeComponent();
             cmd = new MySqlCommand();
@@ -47,10 +41,6 @@ namespace bill
 
         private void BillingForm_Load(object sender, EventArgs e)
         {
-            gList = new List<GIFT>();
-            dList = new List<DRINK>();
-            pList = new List<Customer>();
-
             DBConnect(); //TEMP THING
         }
 
@@ -68,155 +58,6 @@ namespace bill
 
             connection.Open();
         }
-
-        private void setupSqlCommand(String query)
-        {
-            cmd.Connection = connection;
-            cmd.CommandText = query;
-        }
-
-        private void calcBill_Click(object sender, EventArgs e)
-        {
-            string query1 = "SELECT isBillHolder FROM ROOM_PASSENGER WHERE roomPass_id = " + rumID.Text;
-            string query = "select gt.gift_id, gt.giftSale_id, g.gift_name, g.gift_price, gt.sale_time, gt.sale_date, gt.shop_id from GIFT_TRANSACTION as gt INNER JOIN GIFTS as  g on gt.gift_id = g.gift_id  where gt.roomPass_id = " + rumID.Text;
-            string query2 = " select bt.drink_id, bt.barSale_id, d.drink_name, d.drink_price, bt.sale_time, bt.sale_date, bt.bar_id from  BAR_TRANSACTION as bt   INNER JOIN DRINKS as  d on d.drink_id = bt.drink_id  where bt.roomPass_id = " + rumID.Text;
-            bool value = true;
-            string query3 = "select pass_firstname , pass_lastname from PASSENGER where pass_id =" + rumID.Text;
-            // MessageBox.Show(query);
-
-            //Open connection
-            if (connection != null)
-            {
-                setupSqlCommand(query1);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    rp = new Customer();
-                    // MessageBox.Show(dataReader["isBillHolder"].ToString());
-                    rp.isBillHolder = (dataReader["isBillHolder"].ToString() == "True");
-					MessageBox.Show(rp.isBillHolder.ToString());
-                    pList.Add(rp);
-                }
-
-                //close Data Reader
-                dataReader.Close();
-
-                if (rp.isBillHolder == value)
-                {
-                    string filename = "Bill - " + rp.pass_fname + " " + rp.pass_lname + ".txt";
-                    label5.Text = null;
-
-                    using (StreamWriter file = new StreamWriter(filename))
-                    {
-                        label5.Text = "";
-
-                        setupSqlCommand(query3);
-                        dataReader = cmd.ExecuteReader();
-
-                        while (dataReader.Read())
-                        {
-                            rp = new Customer();
-
-                            rp.pass_fname = (dataReader["pass_firstname"].ToString());
-                            rp.pass_lname = (dataReader["pass_lastname"].ToString());
-
-                            pList.Add(rp);
-                        }
-
-                        //close Data Reader
-                        dataReader.Close();
-                            label5.Text = "Bill Holder Name : " + rp.pass_fname +" " + rp.pass_lname + "\n";
-                            file.WriteLine("Bill Holder Name : " + rp.pass_fname + " " + rp.pass_lname + "\n");
-                        
-
-                        setupSqlCommand(query);
-                        dataReader = cmd.ExecuteReader();
-                        while (dataReader.Read())
-                        {
-                            g = new GIFT();
-
-                            g.giftID = int.Parse(dataReader["gift_id"].ToString());
-                            g.giftNAME = (dataReader["gift_name"].ToString());
-                            g.giftPRICE = double.Parse(dataReader["gift_price"].ToString());
-                            g.gsID = (int.Parse(dataReader["giftSale_id"].ToString()));
-                            g.Date = (DateTime.Parse(dataReader["sale_date"].ToString()));
-                            g.saleTIME = (DateTime.Parse(dataReader["sale_time"].ToString()));
-
-                            gList.Add(g);
-                        }
-
-                        //close Data Reader
-                        dataReader.Close();
-
-                        double sum = 0;
-                        
-                        string header = String.Format("{0,-10}{1,-25}{2,-10}{3,-12}{4,-12}\n",
-                                       "SaleID", "Name", "Price", "Date", "Time" );
-                        label5.Text += "\n";
-                        label5.Text += header + "\n";
-                        file.WriteLine( "\n");
-                        file.WriteLine(header + "\n");
-                        
-                        foreach (GIFT ab in gList)
-                        {
-                            string output = String.Format("{0,-10}{1,-25}{2,-10:c}{3,-12:yyyy-MM-dd}{4,-12:hh:mm:ss}",
-                                ab.gsID, ab.giftNAME , ab.giftPRICE,ab.Date, ab.saleTIME );
-                            label5.Text += output + "\n";
-                            file.WriteLine(output + "\n");
-                            sum += ab.giftPRICE;
-                        }
-
-                        //  MessageBox.Show(sum.ToString());
-                        setupSqlCommand(query2);
-                        dataReader = cmd.ExecuteReader();
-                        while (dataReader.Read())
-                        {
-                            d = new DRINK();
-
-                            d.barID = (int.Parse(dataReader["bar_id"].ToString()));
-                            d.bsID = (int.Parse(dataReader["barSale_id"].ToString()));
-                            d.drinkID = (int.Parse(dataReader["drink_id"].ToString()));
-                            d.drinkNAME = dataReader["drink_name"].ToString();
-                            d.drinkPRICE = double.Parse(dataReader["drink_price"].ToString());
-                            d.Date = (DateTime.Parse(dataReader["sale_date"].ToString()));
-                            d.saleTIME = (DateTime.Parse(dataReader["sale_time"].ToString()));
-
-                            dList.Add(d);
-                        }
-
-                        //close Data Reader
-                        dataReader.Close();
-                        foreach (DRINK ef in dList)
-                        {
-                            string output1 = String.Format("{0,-10}{1,-25}{2,-10:c}{3,-12:yyyy-MM-dd}{4,-12:hh:mm:ss}", ef.bsID, ef.drinkNAME, ef.drinkPRICE, ef.Date, ef.saleTIME);
-    
-                            label5.Text += (output1 + "\n");
-                            file.WriteLine(output1 + "\n");
-                            sum += ef.drinkPRICE;
-                        }
-
-                        label5.Text += "=====================\n";
-                        file.WriteLine("===================\n");
-                        label5.Text += "Your Total Bill is : $";
-                        label5.Text += sum.ToString();
-                        file.WriteLine("Your Total Bill is : $"+ sum.ToString());
-                        label5.Text += "\n \n THANKS";
-                        file.WriteLine("\n");
-                        file.WriteLine( "\n"+"THANKS");
-                    }
-                }
-                else
-                {
-                    label5.Text = null;
-                    label5.Text = ("Passenger is not a bill holder!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Try to connect");
-            }
-		}
 
 		//this will give the bill holder's name for the reciept given the roomnumber
 		private string getBHname(int RN)
@@ -246,6 +87,12 @@ namespace bill
 				return name;
 			}
 		}
+
+        //this method will generate the list of transactions associated with the RN
+        private void generateTrans(int RN)
+        {
+            //run two queries, one for drinks the other for gifts
+        }
 
 		//This should calculate all the expenses
 		private void btnCalc_Click(object sender, EventArgs e)
