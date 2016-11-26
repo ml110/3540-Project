@@ -89,14 +89,14 @@ namespace CruiseControl
 
             if(lastday == "error")
             {
-                MessageBox.Show("Cannot get last day");
+                MessageBox.Show("Cannot get last day", "ERROR");
             }else if (portId == "error")
             {
-                MessageBox.Show("Invalid Port");
+                MessageBox.Show("Invalid Port", "ERROR");
             }
             else if (statusId == "error")
             {
-                MessageBox.Show("Invalid Status");
+                MessageBox.Show("Invalid Status", "ERROR");
             }
             else
             {
@@ -118,7 +118,7 @@ namespace CruiseControl
                     cmd.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("Day Added");
+                MessageBox.Show("Day Added", "SUCCESS");
             }
         }
 
@@ -238,11 +238,11 @@ namespace CruiseControl
                 switch (ex.Number)
                 {
                     case 0:
-                        MessageBox.Show("Cannot connect to server.  Contact administrator");
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "ERROR");
                         break;
 
                     case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
+                        MessageBox.Show("Invalid username/password, please try again", "ERROR");
                         break;
                 }
             }
