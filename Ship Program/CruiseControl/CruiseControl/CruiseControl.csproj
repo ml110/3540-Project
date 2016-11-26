@@ -59,7 +59,13 @@
     <Compile Include="AddBelow.Designer.cs">
       <DependentUpon>AddBelow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cruncher.cs" />
+    <Compile Include="BillingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillingForm.Designer.cs">
+      <DependentUpon>BillingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRUNCHER.cs" />
     <Compile Include="DeckMapForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,17 +73,23 @@
       <DependentUpon>DeckMapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DINNER.cs" />
+    <Compile Include="DrinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrinkForm.designer.cs">
+      <DependentUpon>DrinkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPassenger.cs">
+    <Compile Include="RoomViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPassenger.designer.cs">
-      <DependentUpon>FormPassenger.cs</DependentUpon>
+    <Compile Include="RoomViewerForm.designer.cs">
+      <DependentUpon>RoomViewerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DinnerForm.cs">
       <SubType>Form</SubType>
@@ -91,11 +103,17 @@
     <Compile Include="DinnerTableForm.Designer.cs">
       <DependentUpon>DinnerTableForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main_Form.cs">
+    <Compile Include="GiftForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main_Form.Designer.cs">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <Compile Include="GiftForm.designer.cs">
+      <DependentUpon>GiftForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PASSENGER.cs" />
     <Compile Include="Program.cs" />
@@ -110,12 +128,13 @@
     </Compile>
     <Compile Include="STAFF.cs" />
     <Compile Include="TABLE.cs" />
+    <Compile Include="TRANSACTION.cs" />
     <Compile Include="TRIP.cs" />
-    <Compile Include="TripManagment.cs">
+    <Compile Include="TripManagmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TripManagment.Designer.cs">
-      <DependentUpon>TripManagment.cs</DependentUpon>
+    <Compile Include="TripManagmentForm.Designer.cs">
+      <DependentUpon>TripManagmentForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
@@ -123,14 +142,20 @@
     <EmbeddedResource Include="AddBelow.resx">
       <DependentUpon>AddBelow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BillingForm.resx">
+      <DependentUpon>BillingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeckMapForm.resx">
       <DependentUpon>DeckMapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrinkForm.resx">
+      <DependentUpon>DrinkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPassenger.resx">
-      <DependentUpon>FormPassenger.cs</DependentUpon>
+    <EmbeddedResource Include="RoomViewerForm.resx">
+      <DependentUpon>RoomViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DinnerForm.resx">
       <DependentUpon>DinnerForm.cs</DependentUpon>
@@ -138,8 +163,11 @@
     <EmbeddedResource Include="DinnerTableForm.resx">
       <DependentUpon>DinnerTableForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main_Form.resx">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <EmbeddedResource Include="GiftForm.resx">
+      <DependentUpon>GiftForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -153,8 +181,8 @@
     <EmbeddedResource Include="ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TripManagment.resx">
-      <DependentUpon>TripManagment.cs</DependentUpon>
+    <EmbeddedResource Include="TripManagmentForm.resx">
+      <DependentUpon>TripManagmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -34,7 +34,7 @@ namespace CruiseControl
         private int staffID;
 
         //I need this for reasons
-        Cruncher beepBoop;
+        CRUNCHER beepBoop;
 		
 		public ScheduleForm(int TN, MySqlConnection con, MySqlCommand cmd)
 		{
@@ -43,7 +43,7 @@ namespace CruiseControl
 			command = cmd;
 			tripNum = TN;
 
-            beepBoop = new Cruncher(connection, command);
+            beepBoop = new CRUNCHER(connection, command);
 		}
 
 		private void ScheduleForm_Load(object sender, EventArgs e)

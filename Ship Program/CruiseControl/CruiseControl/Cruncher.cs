@@ -19,14 +19,14 @@ using System.Diagnostics;
 
 namespace CruiseControl
 {
-	class Cruncher
+	class CRUNCHER
 	{
         //SQL Connection
         private MySqlConnection connection;
         MySqlCommand command;
 
         //CONSTRUCTOR for getting the connection stuff
-        public Cruncher(MySqlConnection con, MySqlCommand cmd)
+        public CRUNCHER(MySqlConnection con, MySqlCommand cmd)
         {
             connection = con;
             command = cmd;

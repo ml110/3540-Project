@@ -251,14 +251,14 @@ namespace CruiseControl
 
         private void newPassForum(object sender, EventArgs e)
         {
-            FormPassenger newForum = new FormPassenger();
+            RoomViewerForm newForum = new RoomViewerForm();
 
             var getPass = from pass in passList
                        join rp in rmpassList on pass.pass_id equals rp.pass_id
                        join r in roomList on rp.room_id equals r.room_id
                        where rp.trip_id == tripID
                        where r.room_number == int.Parse(((Button)sender).Text)
-                       select new { pass_id = pass.pass_id, name = pass.name};
+                       select new { ID = pass.pass_id, NAME = pass.name};
 
             var getBillHolder = from pass in passList
                        join rp in rmpassList on pass.pass_id equals rp.pass_id
@@ -266,7 +266,7 @@ namespace CruiseControl
                        where rp.trip_id == tripID
                        where r.room_number == int.Parse(((Button)sender).Text)
                        where rp.isBillHolder == true
-                       select new { pass_id = pass.pass_id, name = pass.name };
+                       select new { ID = pass.pass_id, NAME = pass.name };
 
             newForum.passengers = getPass.ToList();
             newForum.billHolder = getBillHolder.ToList();
