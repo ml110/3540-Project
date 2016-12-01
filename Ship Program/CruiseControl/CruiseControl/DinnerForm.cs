@@ -257,7 +257,7 @@ namespace CruiseControl
                 if (dinnerList[i].trip_id == tripID &&
                     dinnerList[i].dinner_sitting == int.Parse(cbSitting.SelectedItem.ToString()) &&
                     dinnerList[i].dinner_date == cbDeck.SelectedItem.ToString() &&
-                    dinnerList[i].table_id == int.Parse(((Button)sender).Text)) {
+                    dinnerList[i].table_id == int.Parse(((Button)sender).Text.Split(' ')[1])) {
 
                     dinner_id = dinnerList[i].dinner_id;
                     break;
@@ -298,7 +298,7 @@ namespace CruiseControl
                     newButton.Left = left;
                     newButton.Height = 50;
                     newButton.Width = 50;
-                    newButton.Text = tableList[i].table_id.ToString();
+                    newButton.Text = "TABLE " + tableList[i].table_id.ToString();
 
                     var findEmpty = from rp in dinnerList
                                     where rp.table_id == tableList[i].table_id
@@ -307,10 +307,16 @@ namespace CruiseControl
                                     where rp.dinner_date == cbDeck.SelectedItem.ToString()
                                     select rp;
 
-                    if (findEmpty.Count() == 0)
-                        newButton.Enabled = false;
-                    else
-                        newButton.Click += newPassForum;
+					if (findEmpty.Count() == 0)
+					{
+						newButton.Enabled = false;
+						newButton.BackColor = Color.Gray;
+					}
+					else
+					{
+						newButton.BackColor = Color.White;
+						newButton.Click += newPassForum;
+					}
                     
                     buttonList.Add(newButton);
                     this.Controls.Add(newButton);
